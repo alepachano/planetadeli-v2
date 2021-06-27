@@ -1,12 +1,16 @@
-import logo from './logo.svg';
+import logo from './logo.png';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import NavBar from './components/NavBar/index.jsx';
-
+import { Navbar } from './components/NavbarComponent';
+import ItemListContainer from './containers/ItemListContainer';
 
 function App() {
   return (
-    <NavBar />
+    <div>
+      <img src={logo} height="100" alt="logo"/>
+      <Navbar />
+      <ItemListContainer greeting={'hola, soy una prop :)'}/>
+    </div>
   );
 }
 
