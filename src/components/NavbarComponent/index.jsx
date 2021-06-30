@@ -1,7 +1,8 @@
 import './style.css';
 import { CartWidget } from '../CartWidgetComponent';
 
-export function Navbar() {
+
+export function Navbar({boton}) {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -29,6 +30,7 @@ export function Navbar() {
                         <li className="nav-item">
                             <a className="nav-link">Carrito <CartWidget /> </a>
                         </li>
+                        {boton()}
                     </ul>
                 </div>
             </div>
