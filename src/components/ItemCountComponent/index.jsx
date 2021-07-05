@@ -3,7 +3,7 @@ import { useState } from "react";
 let cantidadMinima = 1;
 let stock = 7;
 
-function ItemCountComponent() {
+export function ItemCountComponent() {
     const [contador, setContador] = useState(1);
 
     function aumentar() {
@@ -27,4 +27,3 @@ function ItemCountComponent() {
     )
 };
 
-export default ItemCountComponent;
