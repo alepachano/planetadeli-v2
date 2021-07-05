@@ -12,11 +12,16 @@ const ButtonComponent = () => {
 
 function App() {
   return (
-    <div>
-      <img src={logo} height="100" alt="logo"/>
-      <Navbar boton={ButtonComponent}/>
-      <ItemListContainer greeting={'hola, soy una prop :)'}/>
-    </div>
+    <>
+      <div>
+        <img src={logo} height="100" alt="logo"/>
+        <Navbar boton={ButtonComponent}/>
+      </div>
+
+      <div>
+        <ItemListContainer />
+      </div>
+    </>
   );
 }
 
