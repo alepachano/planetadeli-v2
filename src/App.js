@@ -2,7 +2,10 @@ import logo from './logo.png';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import { Navbar } from './components/NavbarComponent';
-import ItemListContainer from './containers/ItemListContainer';
+// import ItemListContainer from './containers/ItemListContainer';
+import React from 'react';
+import { ItemDetailContainer } from './containers/ItemDetailContainer';
+
 
 const ButtonComponent = () => {
   return (
@@ -13,14 +16,10 @@ const ButtonComponent = () => {
 function App() {
   return (
     <>
-      <div>
         <img src={logo} height="100" alt="logo"/>
         <Navbar boton={ButtonComponent}/>
-      </div>
-
-      <div>
-        <ItemListContainer />
-      </div>
+        <ItemDetailContainer />
+        {/* <ItemListContainer /> */}
     </>
   );
 }
