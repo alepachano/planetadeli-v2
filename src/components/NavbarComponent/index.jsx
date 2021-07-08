@@ -1,7 +1,6 @@
 import './style.css';
 import { CartWidget } from '../CartWidgetComponent';
 
-
 export function Navbar({boton}) {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
