@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ItemDetailComponent } from "../../components/ItemDetailComponent";
 
 export function ItemDetailContainer() {
@@ -19,7 +20,7 @@ export function ItemDetailContainer() {
 
     return (                                                                                        
         <>
-            <ItemDetailComponent key={detalleProducto.id} nombre={detalleProducto.title} precio={detalleProducto.price} img={detalleProducto.thumbnail} ventas={detalleProducto.sold_quantity}/>
+            <Link to={'/detalle'}> <ItemDetailComponent key={detalleProducto.id} nombre={detalleProducto.title} precio={detalleProducto.price} img={detalleProducto.thumbnail} ventas={detalleProducto.sold_quantity}/></Link>
         </>
     )
 }
