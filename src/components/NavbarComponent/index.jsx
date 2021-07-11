@@ -15,14 +15,16 @@ export function Navbar() {
           <Col md="3">
             <Nav>
               <Nav.Item>
-                <img src={logo} height="80" alt="logo"/>
+                <Link to={'/'}><img src={logo} height="80" alt="logo" /></Link>
               </Nav.Item>
             </Nav>
           </Col>
           <Col md="7">
             <Nav className="justify-content-center">
               <Nav.Item>
-                <Nav.Link>HOME</Nav.Link>
+                <Nav.Link>
+                  <Link to={'/'}>HOME</Link>
+                </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link>PRODUCTOS</Nav.Link>

@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar exact path={'/cart'}/>
+        <Navbar exact path={'/cart'} />
 
         <Switch>
           <Route exact path={'/'}>

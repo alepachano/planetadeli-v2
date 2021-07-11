@@ -5,7 +5,7 @@ import { ItemComponent } from "../../components/ItemComponent";
 const listaProductos = [{
   "id": 1,
   "nombre": "Alisador de tortas",
-  "descripcion": "Ancho: 10cm alto: 30cm",
+  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
   "categoria": "utensilios",
   "precio": 4500,
   "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
@@ -15,7 +15,7 @@ const listaProductos = [{
 {
   "id": 2,
   "nombre": "Base giratoria ajustable",
-  "descripcion": "30 cm de diámetro",
+  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
   "categoria": "utensilios",
   "precio": 15000,
   "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
@@ -25,7 +25,7 @@ const listaProductos = [{
 {
   "id": 3,
   "nombre": "Batidora Kitchen Aid",
-  "descripcion": "Lorem ipsum",
+  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
   "categoria": "batidoras",
   "precio": 300000,
   "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
@@ -35,7 +35,7 @@ const listaProductos = [{
 {
   "id": 4,
   "nombre": "Batidora Cusinart",
-  "descripcion": "Lorem ipsum",
+  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
   "categoria": "batidoras",
   "precio": 11000,
   "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
@@ -45,7 +45,7 @@ const listaProductos = [{
 {
   "id": 5,
   "nombre": "Horno kitchen center",
-  "descripcion": "Lorem ipsum",
+  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
   "categoria": "hornos",
   "precio": 250000,
   "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
@@ -55,7 +55,7 @@ const listaProductos = [{
 {
   "id": 6,
   "nombre": "Horno Thomas",
-  "descripcion": "Lorem ipsum",
+  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
   "categoria": "hornos",
   "precio": 350000,
   "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
@@ -86,7 +86,9 @@ function ItemListContainer() {
         {
           listadoProductos.map(producto => {
             return (
-              <ItemComponent key={producto.id} nombre={producto.nombre} precio={producto.precio} img={producto.imagen} />
+              <>
+                <ItemComponent key={producto.id} nombre={producto.nombre} precio={producto.precio} img={producto.imagen} />
+              </>
             )
           })
         }
