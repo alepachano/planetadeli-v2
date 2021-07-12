@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "nombre": "Alisador de tortas",
+    "descripcion": "Utensilio id 1: Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    "categoriaId": "utensilios",
+    "precio": 4500,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_979524-MLU46386482982_062021-O.jpg",
+    "stock": 60,
+    "cantidadCompra": 0
+  },
+  {
+    "id": 2,
+    "nombre": "Base giratoria ajustable",
+    "descripcion": "Utensilio id 2: Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    "categoriaId": "utensilios",
+    "precio": 15000,
+    "imagen": "https://www.cherrychile.cl/uploads/productos/ae636b0f.jpg",
+    "stock": 45,
+    "cantidadCompra": 0
+  },
+  {
+    "id": 3,
+    "nombre": "Batidora Kitchen Aid",
+    "descripcion": "Batidora id 3: Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    "categoriaId": "batidoras",
+    "precio": 300000,
+    "imagen": "https://images-na.ssl-images-amazon.com/images/I/8157Lc9KdpL._AC_SX466_.jpg",
+    "stock": 55,
+    "cantidadCompra": 0
+  },
+  {
+    "id": 4,
+    "nombre": "Batidora Cusinart",
+    "descripcion": "Batidora id 4: Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    "categoriaId": "batidoras",
+    "precio": 11000,
+    "imagen": "https://images-na.ssl-images-amazon.com/images/I/61iCK0cJzyL._AC_SX679_.jpg",
+    "stock": 35,
+    "cantidadCompra": 0
+  },
+  {
+    "id": 5,
+    "nombre": "Horno kitchen center",
+    "descripcion": "Horno id 5: Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    "categoriaId": "hornos",
+    "precio": 250000,
+    "imagen": "https://cdn.shopify.com/s/files/1/0104/4391/5319/products/19109.jpg?v=1586439867",
+    "stock": 32,
+    "cantidadCompra": 0
+  },
+  {
+    "id": 6,
+    "nombre": "Horno Thomas",
+    "descripcion": "Horno id 6: Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    "categoriaId": "hornos",
+    "precio": 350000,
+    "imagen": "https://images.lider.cl/wmtcl?source=url[file:/productos/1142007c.jpg]&sink",
+    "stock": 28,
+    "cantidadCompra": 0
+  }
+]

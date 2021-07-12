@@ -1,25 +1,35 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { Container } from "react-bootstrap";
 import { ItemDetailComponent } from "../../components/ItemDetailComponent";
+import listaProductos from "../../bd/listaProductos.json";
+import { useParams } from "react-router-dom";
 
 export function ItemDetailContainer() {
-    const [detalleProducto, setDetalleProducto] = useState([]);
+  const [producto, setProducto] = useState([]);
 
-    useEffect(() => {
-        async function obtenerDataMercadoLibre(){
-            const response = await fetch("https://api.mercadolibre.com/sites/MLC/search?q=boquillas-wilton");
-            const data = await response.json();
-            setDetalleProducto(data.results[0]); // guarda solo 1 resultado (el de la posición 0)
-        }
+  const { id } = useParams();
 
-        obtenerDataMercadoLibre();
-    }, []);
+  useEffect(() => {
+    const promesa = new Promise((resolve, reject) => {
+      resolve(listaProductos);
+    });
 
-    // console.log(detalleProducto);
+    if (id) {
+      promesa.then(data => {
+        const idProducto = data.find(producto => producto.id === parseInt(id))
+        setProducto(idProducto)
+        console.log('hola yo soy el producto con id #', id);
+      })
+    }
+  }, [])
 
-    return (                                                                                        
-        <>
-            <ItemDetailComponent key={detalleProducto.id} nombre={detalleProducto.title} precio={detalleProducto.price} img={detalleProducto.thumbnail} ventas={detalleProducto.sold_quantity}/>
-        </>
-    )
-}
+  return (
+    <>
+      <Container>
+        <ItemDetailComponent key={producto.id} img={producto.imagen} nombre={producto.nombre} descripcion={producto.descripcion} precio={producto.precio} stock={producto.stock} />
+      </Container>
+    </>
+  )
+};
+
