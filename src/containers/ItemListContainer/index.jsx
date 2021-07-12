@@ -1,71 +1,14 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { Container } from "react-bootstrap";
 import { ItemComponent } from "../../components/ItemComponent";
-
-const listaProductos = [{
-  "id": 1,
-  "nombre": "Alisador de tortas",
-  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
-  "categoria": "utensilios",
-  "precio": 4500,
-  "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
-  "stock": 60,
-  "cantidadCompra": 0
-},
-{
-  "id": 2,
-  "nombre": "Base giratoria ajustable",
-  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
-  "categoria": "utensilios",
-  "precio": 15000,
-  "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
-  "stock": 45,
-  "cantidadCompra": 0
-},
-{
-  "id": 3,
-  "nombre": "Batidora Kitchen Aid",
-  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
-  "categoria": "batidoras",
-  "precio": 300000,
-  "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
-  "stock": 55,
-  "cantidadCompra": 0
-},
-{
-  "id": 4,
-  "nombre": "Batidora Cusinart",
-  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
-  "categoria": "batidoras",
-  "precio": 11000,
-  "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
-  "stock": 35,
-  "cantidadCompra": 0
-},
-{
-  "id": 5,
-  "nombre": "Horno kitchen center",
-  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
-  "categoria": "hornos",
-  "precio": 250000,
-  "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
-  "stock": 32,
-  "cantidadCompra": 0
-},
-{
-  "id": 6,
-  "nombre": "Horno Thomas",
-  "descripcion": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptates unde id delectus ut repellendus similique odio totam? Praesentium dicta culpa unde ea incidunt quis consectetur dignissimos et officiis tenetur!",
-  "categoria": "hornos",
-  "precio": 350000,
-  "imagen": "https://soyunperro.com/wp-content/uploads/perrocontento.jpg",
-  "stock": 28,
-  "cantidadCompra": 0
-}
-];
+import listaProductos from "../../bd/listaProductos.json";
+import { useParams } from "react-router-dom";
 
 function ItemListContainer() {
   const [listadoProductos, setListadoProductos] = useState([]);
+
+  const { id } = useParams();
 
   useEffect(() => {
     const promesa = new Promise((resolve, reject) => {
@@ -74,10 +17,19 @@ function ItemListContainer() {
       }, 2000);
     });
 
-    promesa.then(data => {
-      setListadoProductos(data);
-    })
+    if (id) {
+      promesa.then(data => {
+        const categoria = data.filter(producto => producto.categoriaId === id)
+        setListadoProductos(categoria)
+        console.log('hola yo soy la categoria', categoria);
+      })
 
+    } else {
+      promesa.then(data => {
+        setListadoProductos(data);
+        console.log('no hay categoría en especifico, traigo todos los productos');
+      })
+    }
   }, [])
 
   return (
@@ -87,7 +39,9 @@ function ItemListContainer() {
           listadoProductos.map(producto => {
             return (
               <>
-                <ItemComponent key={producto.id} nombre={producto.nombre} precio={producto.precio} img={producto.imagen} />
+                <Container>
+                  <ItemComponent key={producto.id} img={producto.imagen} nombre={producto.nombre} descripcion={producto.descripcion} precio={producto.precio} id={producto.id} />
+                </Container>
               </>
             )
           })
@@ -120,10 +74,10 @@ function ItemListContainer() {
 
 //     console.log(listadoProductos);
 
-//     return (                                                                                        
+//     return (
 // <>
 //     <div>
-//         {                
+//         {
 //             listadoProductos.map(producto => {
 //                 return (
 //                     <ItemComponent key={producto.id} nombre={producto.title} precio={producto.price} img={producto.thumbnail} />

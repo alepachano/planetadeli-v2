@@ -11,16 +11,22 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar exact path={'/cart'} />
+        <Navbar />
 
         <Switch>
           <Route exact path={'/'}>
             <ItemListContainer />
           </Route>
 
-          <Route exact path={'/detalle'}>
+          <Route exact path={'/category/:id'}>
+            <ItemListContainer />
+          </Route>
+
+          <Route exact path={'/item/:id'}>
             <ItemDetailContainer />
           </Route>
+
+          {/* <Route path={"*"} component={() => <h1>Error 404</h1>} /> */}
         </Switch>
 
       </BrowserRouter>

@@ -7,6 +7,22 @@ import Nav from 'react-bootstrap/Nav';
 import { CartWidget } from '../CartWidgetComponent';
 import { Link } from 'react-router-dom';
 
+// CATEGORIAS DE PRODUCTOS
+const categorias = [
+  {
+    "categoriaId": "utensilios",
+    "nombre": "UTENSILIOS"
+  },
+  {
+    "categoriaId": "batidoras",
+    "nombre": "BATIDORAS"
+  },
+  {
+    "categoriaId": "hornos",
+    "nombre": "HORNOS"
+  }
+];
+
 export function Navbar() {
   return (
     <>
@@ -19,6 +35,7 @@ export function Navbar() {
               </Nav.Item>
             </Nav>
           </Col>
+
           <Col md="7">
             <Nav className="justify-content-center">
               <Nav.Item>
@@ -26,14 +43,19 @@ export function Navbar() {
                   <Link to={'/'}>HOME</Link>
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
-                <Nav.Link>PRODUCTOS</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link>CATEGORIAS</Nav.Link>
-              </Nav.Item>
+
+              {/* DINAMISMO EN LA SELECCION DE LA CATEGORIA EN NAVBAR */}
+              {categorias.map(categoria =>
+                <Nav.Item>
+                  <Nav.Link>
+                    <Link to={`/category/${categoria.categoriaId}`}>
+                      {categoria.nombre}
+                    </Link>
+                  </Nav.Link>
+                </Nav.Item>)}
             </Nav>
           </Col>
+
           <Col md="2" >
             <Nav className="justify-content-left">
               <Link to={"/cart"}> <CartWidget /> 1</Link>
