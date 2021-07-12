@@ -2,7 +2,7 @@
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import { Navbar } from './components/NavbarComponent';
-import ItemListContainer from './containers/ItemListContainer';
+import { ItemListContainer } from './containers/ItemListContainer';
 import React from 'react';
 import { ItemDetailContainer } from './containers/ItemDetailContainer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';

@@ -19,13 +19,7 @@ export function ItemDetailContainer() {
       promesa.then(data => {
         const idProducto = data.find(producto => producto.id === parseInt(id))
         setProducto(idProducto)
-        console.log('hola yo soy el idProducto', idProducto);
-      })
-
-    } else {
-      promesa.then(data => {
-        setProducto(data);
-        console.log('no hay categoría en especifico, traigo todos los productos');
+        console.log('hola yo soy el producto con id #', id);
       })
     }
   }, [])

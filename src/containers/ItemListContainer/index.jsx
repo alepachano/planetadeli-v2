@@ -5,7 +5,7 @@ import { ItemComponent } from "../../components/ItemComponent";
 import listaProductos from "../../bd/listaProductos.json";
 import { useParams } from "react-router-dom";
 
-function ItemListContainer() {
+export function ItemListContainer() {
   const [listadoProductos, setListadoProductos] = useState([]);
 
   const { id } = useParams();
@@ -14,14 +14,14 @@ function ItemListContainer() {
     const promesa = new Promise((resolve, reject) => {
       setTimeout(function () {
         resolve(listaProductos);
-      }, 2000);
+      }, 1000);
     });
 
     if (id) {
       promesa.then(data => {
         const categoria = data.filter(producto => producto.categoriaId === id)
         setListadoProductos(categoria)
-        console.log('hola yo soy la categoria', categoria);
+        console.log('hola yo soy la categoria:', id);
       })
 
     } else {
@@ -30,7 +30,7 @@ function ItemListContainer() {
         console.log('no hay categoría en especifico, traigo todos los productos');
       })
     }
-  }, [])
+  }, [id])
 
   return (
     <>
@@ -50,9 +50,6 @@ function ItemListContainer() {
     </>
   )
 }
-
-
-
 
 
 
@@ -90,5 +87,3 @@ function ItemListContainer() {
 // </>
 //     )
 // }
-
-export default ItemListContainer;

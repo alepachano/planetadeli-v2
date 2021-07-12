@@ -8,20 +8,20 @@ import { CartWidget } from '../CartWidgetComponent';
 import { Link } from 'react-router-dom';
 
 // CATEGORIAS DE PRODUCTOS
-const categorias = [
-  {
-    "categoriaId": "utensilios",
-    "nombre": "UTENSILIOS"
-  },
-  {
-    "categoriaId": "batidoras",
-    "nombre": "BATIDORAS"
-  },
-  {
-    "categoriaId": "hornos",
-    "nombre": "HORNOS"
-  }
-];
+// const categorias = [
+//   {
+//     "categoriaId": "utensilios",
+//     "nombre": "UTENSILIOS"
+//   },
+//   {
+//     "categoriaId": "batidoras",
+//     "nombre": "BATIDORAS"
+//   },
+//   {
+//     "categoriaId": "hornos",
+//     "nombre": "HORNOS"
+//   }
+// ];
 
 export function Navbar() {
   return (
@@ -43,16 +43,21 @@ export function Navbar() {
                   <Link to={'/'}>HOME</Link>
                 </Nav.Link>
               </Nav.Item>
-
-              {/* DINAMISMO EN LA SELECCION DE LA CATEGORIA EN NAVBAR */}
-              {categorias.map(categoria =>
-                <Nav.Item>
-                  <Nav.Link>
-                    <Link to={`/category/${categoria.categoriaId}`}>
-                      {categoria.nombre}
-                    </Link>
-                  </Nav.Link>
-                </Nav.Item>)}
+              <Nav.Link>
+                <Link to={'/category/batidoras'}>BATIDORAS</Link>
+              </Nav.Link>
+              <Nav.Item>
+                <Nav.Link>
+                  <Link to={'/category/utensilios'}>UTENSILIOS</Link>
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link>
+                  <Link to={'/category/hornos'}>HORNOS</Link>
+                </Nav.Link>
+              </Nav.Item>
             </Nav>
           </Col>
 
