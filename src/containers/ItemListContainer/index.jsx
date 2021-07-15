@@ -36,11 +36,11 @@ export function ItemListContainer() {
     <>
       <div>
         {
-          listadoProductos.map(producto => {
+          listadoProductos.map((producto, index) => {
             return (
               <>
                 <Container>
-                  <ItemComponent key={producto.id} img={producto.imagen} nombre={producto.nombre} descripcion={producto.descripcion} precio={producto.precio} id={producto.id} />
+                  <ItemComponent key={index} img={producto.imagen} nombre={producto.nombre} descripcion={producto.descripcion} precio={producto.precio} id={producto.id} />
                 </Container>
               </>
             )
