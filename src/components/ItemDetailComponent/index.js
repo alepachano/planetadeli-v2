@@ -3,7 +3,6 @@ import Image from 'react-bootstrap/Image';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { ItemCountComponent } from "../../components/ItemCountComponent";
 import { Typography } from '@material-ui/core';
 
 export function ItemDetailComponent({ img, nombre, descripcion, precio, stock }) {
@@ -21,7 +20,6 @@ export function ItemDetailComponent({ img, nombre, descripcion, precio, stock })
               <h5>{descripcion}</h5>
               <h5>Stock: {stock} </h5>
             </Typography>
-            <ItemCountComponent />
           </Col>
         </Row>
       </Container>
