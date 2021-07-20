@@ -1,52 +1,42 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Container } from "react-bootstrap";
 import { ItemComponent } from "../../components/ItemComponent";
-import listaProductos from "../../bd/listaProductos.json";
 import { useParams } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 export function ItemListContainer() {
-  const [listadoProductos, setListadoProductos] = useState([]);
+  const [listaCategorias, setListaCategorias] = useState([]);
 
   const { id } = useParams();
 
+  const context = useContext(CartContext)
+  console.log('hola soy el context', context);
+
   useEffect(() => {
-    const promesa = new Promise((resolve, reject) => {
-      setTimeout(function () {
-        resolve(listaProductos);
-      }, 1000);
-    });
-
     if (id) {
-      promesa.then(data => {
-        const categoria = data.filter(producto => producto.categoriaId === id)
-        setListadoProductos(categoria)
-        console.log('hola yo soy la categoria:', id);
-      })
-
+      const categoria = context.listadoProductos.filter(producto => producto.categoriaId === id);
+      setListaCategorias(categoria);
+      console.log('hola yo soy la categoria:', id);
+      console.log('hola yo soy la categoria:', categoria);
     } else {
-      promesa.then(data => {
-        setListadoProductos(data);
-        console.log('no hay categoría en especifico, traigo todos los productos');
-      })
+      setListaCategorias(context.listadoProductos);
+      console.log('no hay categoría en especifico, traigo todos los productos');
     }
   }, [id])
 
   return (
     <>
-      <div>
-        {
-          listadoProductos.map((producto, index) => {
-            return (
-              <>
-                <Container>
-                  <ItemComponent key={index} img={producto.imagen} nombre={producto.nombre} descripcion={producto.descripcion} precio={producto.precio} id={producto.id} />
-                </Container>
-              </>
-            )
-          })
-        }
-      </div>
+      {
+        listaCategorias.map((producto, index) => {
+          return (
+            <>
+              <Container>
+                <ItemComponent key={index} img={producto.imagen} nombre={producto.nombre} descripcion={producto.descripcion} precio={producto.precio} id={producto.id} />
+              </Container>
+            </>
+          )
+        })
+      }
     </>
   )
 }
