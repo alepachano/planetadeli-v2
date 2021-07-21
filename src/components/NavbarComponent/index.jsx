@@ -7,22 +7,6 @@ import Nav from 'react-bootstrap/Nav';
 import { CartWidget } from '../CartWidgetComponent';
 import { Link } from 'react-router-dom';
 
-// CATEGORIAS DE PRODUCTOS
-// const categorias = [
-//   {
-//     "categoriaId": "utensilios",
-//     "nombre": "UTENSILIOS"
-//   },
-//   {
-//     "categoriaId": "batidoras",
-//     "nombre": "BATIDORAS"
-//   },
-//   {
-//     "categoriaId": "hornos",
-//     "nombre": "HORNOS"
-//   }
-// ];
-
 export function Navbar() {
   return (
     <>

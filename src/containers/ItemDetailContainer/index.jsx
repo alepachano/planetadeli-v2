@@ -1,10 +1,9 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Button, Container } from "react-bootstrap";
 import { ItemDetailComponent } from "../../components/ItemDetailComponent";
 import { ItemCountComponent } from "../../components/ItemCountComponent";
-import listaProductos from "../../bd/listaProductos.json";
 import { Link, useParams } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 export function ItemDetailContainer() {
   const [producto, setProducto] = useState([]);
@@ -12,18 +11,14 @@ export function ItemDetailContainer() {
   const [isAdded, setIsAdded] = useState(false);
 
   const { id } = useParams();
+  const { listadoProductos } = useContext(CartContext)
+  console.log('hola soy el context', listadoProductos);
 
   useEffect(() => {
-    const promesa = new Promise((resolve, reject) => {
-      resolve(listaProductos);
-    });
-
     if (id) {
-      promesa.then(data => {
-        const idProducto = data.find(producto => producto.id === parseInt(id))
-        setProducto(idProducto)
-        console.log('hola yo soy el producto con id #', id);
-      })
+      const idProducto = listadoProductos.find(product => product.id === parseInt(id))
+      setProducto(idProducto);
+      console.log('hola yo soy el producto con id #', id);
     }
   }, [id])
 
@@ -42,4 +37,3 @@ export function ItemDetailContainer() {
     </>
   )
 };
-
