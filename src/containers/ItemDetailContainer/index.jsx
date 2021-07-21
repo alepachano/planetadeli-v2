@@ -11,12 +11,12 @@ export function ItemDetailContainer() {
   const [isAdded, setIsAdded] = useState(false);
 
   const { id } = useParams();
-  const context = useContext(CartContext)
-  console.log('hola soy el context', context.listadoProductos);
+  const { listadoProductos } = useContext(CartContext)
+  console.log('hola soy el context', listadoProductos);
 
   useEffect(() => {
-    if (id, context) {
-      const idProducto = context.listadoProductos.find(product => product.id === parseInt(id))
+    if (id) {
+      const idProducto = listadoProductos.find(product => product.id === parseInt(id))
       setProducto(idProducto);
       console.log('hola yo soy el producto con id #', id);
     }
@@ -37,4 +37,3 @@ export function ItemDetailContainer() {
     </>
   )
 };
-

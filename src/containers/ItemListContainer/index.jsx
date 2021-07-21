@@ -5,21 +5,19 @@ import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
 export function ItemListContainer() {
+  const { listadoProductos } = useContext(CartContext)
   const [listaCategorias, setListaCategorias] = useState([]);
 
   const { id } = useParams();
 
-  const context = useContext(CartContext)
-  console.log('hola soy el context', context);
-
   useEffect(() => {
     if (id) {
-      const categoria = context.listadoProductos.filter(producto => producto.categoriaId === id);
+      const categoria = listadoProductos.filter(producto => producto.categoriaId === id);
       setListaCategorias(categoria);
       console.log('hola yo soy la categoria:', id);
       console.log('hola yo soy la categoria:', categoria);
     } else {
-      setListaCategorias(context.listadoProductos);
+      setListaCategorias(listadoProductos);
       console.log('no hay categoría en especifico, traigo todos los productos');
     }
   }, [id])
