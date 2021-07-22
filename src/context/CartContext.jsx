@@ -10,13 +10,22 @@ export function CartProvider({ children }) {
   const [listadoProductos, setListadoProductos] = useState([]);
   const [addToCart, setAddToCart] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
-  const [quantity, setQuantity] = useState([]);
+  const [quantity, setQuantity] = useState();
+  const [cart, setCart] = useState([]);
 
-  function onAdd(props) {
+  function onAdd(product) {
     setAddToCart(true);
     setIsAdded(true);
-    console.log('hola soy la props', props);
+    shoppingCart(product);
   }
+
+  function shoppingCart(product){
+    setCart(product);
+    console.log('hola soy el producto', product)
+    console.log('hola soy el producto en cart', cart);
+  }
+
+console.log(cart);
 
   useEffect(() => {
     function traerData() {
@@ -33,7 +42,7 @@ export function CartProvider({ children }) {
   }, [])
 
   return (
-    <CartContext.Provider value={{ listadoProductos , onAdd, addToCart, isAdded, setAddToCart, setIsAdded, quantity, setQuantity }}>
+    <CartContext.Provider value={{ listadoProductos , onAdd, addToCart, isAdded, setAddToCart, setIsAdded, quantity, setQuantity, cart }}>
       {listadoProductos.length > 0 ? children : <Spinner animation="border" variant="info" />}
     </CartContext.Provider>
   )
