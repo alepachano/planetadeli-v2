@@ -4,8 +4,15 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Typography } from '@material-ui/core';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
+import { Button } from "react-bootstrap";
+import { ItemCountComponent } from "../../components/ItemCountComponent";
+import { Link } from "react-router-dom";
 
 export function ItemDetailComponent({ img, nombre, descripcion, precio, stock }) {
+  const { onAdd, addToCart, isAdded, quantity } = useContext(CartContext)
+
   return (
     <>
       <Container>
@@ -20,6 +27,11 @@ export function ItemDetailComponent({ img, nombre, descripcion, precio, stock })
               <h5>{descripcion}</h5>
               <h5>Stock: {stock} </h5>
             </Typography>
+
+            {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
+
+            {isAdded ? <Button onClick={onAdd} variant="outline-primary"><Link to={"/cart"}>Terminar la compra</Link></Button> : <Button onClick={() => { onAdd({ "item": nombre, "cantidad": quantity }) }} variant="outline-primary">Agregar al carrito</Button>}
+
           </Col>
         </Row>
       </Container>

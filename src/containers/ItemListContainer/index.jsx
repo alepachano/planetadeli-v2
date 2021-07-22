@@ -14,7 +14,6 @@ export function ItemListContainer() {
     if (id) {
       const categoria = listadoProductos.filter(producto => producto.categoriaId === id);
       setListaCategorias(categoria);
-      console.log('hola yo soy la categoria:', id);
       console.log('hola yo soy la categoria:', categoria);
     } else {
       setListaCategorias(listadoProductos);

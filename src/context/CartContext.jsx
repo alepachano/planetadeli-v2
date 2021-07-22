@@ -8,6 +8,15 @@ export const CartContext = createContext();
 // componente que provee los datos
 export function CartProvider({ children }) {
   const [listadoProductos, setListadoProductos] = useState([]);
+  const [addToCart, setAddToCart] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
+  const [quantity, setQuantity] = useState([]);
+
+  function onAdd(props) {
+    setAddToCart(true);
+    setIsAdded(true);
+    console.log('hola soy la props', props);
+  }
 
   useEffect(() => {
     function traerData() {
@@ -24,7 +33,7 @@ export function CartProvider({ children }) {
   }, [])
 
   return (
-    <CartContext.Provider value={{ listadoProductos }}>
+    <CartContext.Provider value={{ listadoProductos , onAdd, addToCart, isAdded, setAddToCart, setIsAdded, quantity, setQuantity }}>
       {listadoProductos.length > 0 ? children : <Spinner animation="border" variant="info" />}
     </CartContext.Provider>
   )
