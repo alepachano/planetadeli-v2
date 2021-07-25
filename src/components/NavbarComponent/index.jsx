@@ -6,8 +6,13 @@ import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import { CartWidget } from '../CartWidgetComponent';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 export function Navbar() {
+
+  const { cart } = useContext(CartContext)
+
   return (
     <>
       <Container>
@@ -47,7 +52,7 @@ export function Navbar() {
 
           <Col md="2" >
             <Nav className="justify-content-left">
-              <Link to={"/cart"}> <CartWidget /> 1</Link>
+              <Link to={"/cart"}> <CartWidget /> {cart.length}</Link>
             </Nav>
           </Col>
         </Row>

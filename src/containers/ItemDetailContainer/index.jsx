@@ -14,7 +14,6 @@ export function ItemDetailContainer() {
     if (id) {
       const idProducto = listadoProductos.find(product => product.id === parseInt(id))
       setProducto(idProducto);
-      console.log('hola yo soy el producto con id #', id);
       setAddToCart(false);
       setIsAdded(false);
     }

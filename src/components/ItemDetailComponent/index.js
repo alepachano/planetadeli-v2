@@ -10,8 +10,8 @@ import { Button } from "react-bootstrap";
 import { ItemCountComponent } from "../../components/ItemCountComponent";
 import { Link } from "react-router-dom";
 
-export function ItemDetailComponent({ img, nombre, descripcion, precio, stock }) {
-  const { onAdd, addToCart, isAdded, quantity, cart } = useContext(CartContext)
+export function ItemDetailComponent({ img, nombre, descripcion, precio, stock, id }) {
+  const { onAdd, addToCart, isAdded, quantity, removeItemToCart, clearTheCart } = useContext(CartContext)
 
   return (
     <>
@@ -30,8 +30,9 @@ export function ItemDetailComponent({ img, nombre, descripcion, precio, stock })
 
             {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
 
-            {isAdded ? <Button onClick={onAdd} variant="outline-primary"><Link to={"/cart"}>Terminar la compra</Link></Button> : <Button onClick={() => { onAdd([...cart, { "item": nombre, "cantidad": quantity }]) }} variant="outline-primary">Agregar al carrito</Button>}
-
+            {isAdded ? <Button onClick={onAdd} variant="outline-primary"><Link to={"/cart"}>Terminar la compra</Link></Button> : <Button onClick={() => { onAdd(id, quantity, [{ "item": nombre, "cantidad": quantity, "id": id }]) }} variant="outline-primary">Agregar al carrito</Button>}
+            <Button onClick={() => { removeItemToCart(id) }} variant="outline-primary">Eliminar producto</Button>
+            <Button onClick={clearTheCart} variant="outline-primary">Eliminar todo</Button>
           </Col>
         </Row>
       </Container>
