@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
 
-let cantidadMinima = 1;
-let stock = 7;
-
-export function ItemCountComponent() {
+export function ItemCountComponent({ cantidadMinima, stock }) {
+  const { setQuantity } = useContext(CartContext)
   const [contador, setContador] = useState(1);
 
   function aumentar() {
@@ -14,15 +13,18 @@ export function ItemCountComponent() {
 
   function disminuir() {
     if (contador > cantidadMinima) {
-      setContador(contador - 1)
+      setContador(contador - 1);
     };
   };
 
+  const cantidad = contador;
+  setQuantity(cantidad);
+
   return (
     <div>
-      <button onClick={disminuir}> - </button>
+      <button onClick={() => { disminuir() }}> - </button>
       {contador}
-      <button onClick={aumentar}> + </button>
+      <button onClick={() => { aumentar() }}> + </button>
     </div>
   )
 };
