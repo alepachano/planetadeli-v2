@@ -42,7 +42,7 @@ export function CartProvider({ children }) {
       console.log('soy new cart', newCart);
       setCart(newCart);
     } else {
-      setCart(...cart, product);
+      setCart(...cart, [product]);
       console.log('soy cart', cart);
     }
   };
@@ -71,7 +71,6 @@ export function CartProvider({ children }) {
     };
 
     traerData();
-    console.log(listadoProductos);
   }, [])
 
   return (
