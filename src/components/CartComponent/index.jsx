@@ -8,24 +8,19 @@ import { Link } from "react-router-dom";
 
 export function CartComponent() {
 
-  const { cart, removeItemToCart, clearTheCart } = useContext(CartContext);
-
-
+  const { cart, removeItemToCart, clearTheCart, total , totalItems } = useContext(CartContext);
 
   useEffect(() => {
+  }, [])
 
-    console.log(cart.length);
-
-  }, [cart.length])
+  console.log('soy cart', cart);
 
   return (
-
     <>
-
       {cart.length === 0 ?
         <Container>
           <h4>¡No hay productos en tu carrito!</h4>
-          <Link to={'/'}>Ver productos</Link>
+          <Link to={'/'}>Ir al inicio</Link>
         </Container>
         :
         <Container>
@@ -45,17 +40,21 @@ export function CartComponent() {
                   return (
                     <>
                       <tr>
-                        <th>{index+1}</th>
+                        <th>{index + 1}</th>
                         <th>{product.item}</th>
                         <th>{product.cantidad}</th>
-                        <th>{product.precio}</th>
+                        <th>{product.price}</th>
                         <th><DeleteForeverOutlinedIcon onClick={() => { removeItemToCart(product.id) }} /></th>
                       </tr>
-
                     </>
                   )
                 })
               }
+              <th></th>
+              <th>Total a pagar</th>
+              <th>{totalItems}</th>
+              <th>{total}</th>
+              <th></th>
             </tbody>
           </Table>
           <Button onClick={clearTheCart} variant="outline-primary">Eliminar todo</Button>

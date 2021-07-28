@@ -11,7 +11,7 @@ import { CartContext } from '../../context/CartContext';
 
 export function Navbar() {
 
-  const { cart } = useContext(CartContext)
+  const { totalItems } = useContext(CartContext)
 
   return (
     <>
@@ -52,7 +52,7 @@ export function Navbar() {
 
           <Col md="2" >
             <Nav className="justify-content-left">
-              <Link to={"/cart"}> <CartWidget /> {cart.length}</Link>
+              <Link to={"/cart"}> <CartWidget /> {totalItems}</Link>
             </Nav>
           </Col>
         </Row>

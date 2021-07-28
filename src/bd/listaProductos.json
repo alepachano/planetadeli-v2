@@ -4,7 +4,7 @@
     "nombre": "Alisador de tortas",
     "descripcion": "Utensilio id 1: Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
     "categoriaId": "utensilios",
-    "precio": 4500,
+    "precio": 8000,
     "imagen": "https://http2.mlstatic.com/D_NQ_NP_979524-MLU46386482982_062021-O.jpg",
     "stock": 60,
     "cantidadCompra": 0
@@ -34,7 +34,7 @@
     "nombre": "Batidora Cusinart",
     "descripcion": "Batidora id 4: Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
     "categoriaId": "batidoras",
-    "precio": 11000,
+    "precio": 110000,
     "imagen": "https://images-na.ssl-images-amazon.com/images/I/61iCK0cJzyL._AC_SX679_.jpg",
     "stock": 35,
     "cantidadCompra": 0
