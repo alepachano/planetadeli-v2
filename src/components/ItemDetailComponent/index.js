@@ -11,7 +11,9 @@ import { ItemCountComponent } from "../../components/ItemCountComponent";
 import { Link } from "react-router-dom";
 
 export function ItemDetailComponent({ img, nombre, descripcion, precio, stock, id }) {
-  const { onAdd, addToCart, isAdded, quantity } = useContext(CartContext)
+  const { onAdd, addToCart, isAdded, quantity, cart } = useContext(CartContext)
+
+  console.log('soy cart', cart)
 
   return (
     <>
@@ -30,7 +32,7 @@ export function ItemDetailComponent({ img, nombre, descripcion, precio, stock, i
 
             {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
 
-            {isAdded ? <Button onClick={onAdd} variant="outline-primary"><Link to={"/cart"}>Terminar la compra</Link></Button> : <Button onClick={() => { onAdd(id, quantity, [{ "item": nombre, "cantidad": quantity, "id": id, "precio": precio }]) }} variant="outline-primary">Agregar al carrito</Button>}
+            {isAdded ? <Button onClick={onAdd} variant="outline-primary"><Link to={"/cart"}>Terminar la compra</Link></Button> : <Button onClick={() => { onAdd(id, quantity, { "item": nombre, "cantidad": quantity, "id": id, "price": precio }) }} variant="outline-primary">Agregar al carrito</Button>}
           </Col>
         </Row>
       </Container>

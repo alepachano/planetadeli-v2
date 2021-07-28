@@ -29,21 +29,24 @@ export function CartProvider({ children }) {
     }
   }
 
-  //Agregar al carrito 
+  // Agregar al carrito 
   function shoppingCart(id, quantity, product) {
+    // Si el producto existe en el carrito ...
     if (isInCart(id)) {
       const previousProduct = cart.find(producto => producto.id === id);
-      console.log('validando datos', previousProduct);
+      // calcular cantidad total
       const newQuantity = previousProduct.cantidad + quantity;
-      const newProduct = { "id": previousProduct.id, "item": previousProduct.item, "cantidad": newQuantity };
+      // calcular precio total del producto
+      const newPrice = newQuantity * previousProduct.price;
+      // actualizar info producto
+      const newProduct = { "id": previousProduct.id, "item": previousProduct.item, "cantidad": newQuantity, "price": newPrice };
       const previousCart = cart.filter(product => product.id !== id);
-      // Agrego el nuevo producto
+      // agrego el nuevo producto
       const newCart = [...previousCart, newProduct];
-      console.log('soy new cart', newCart);
       setCart(newCart);
+      // Si el producto no existe en el carrito ..
     } else {
-      setCart(...cart, [product]);
-      console.log('soy cart', cart);
+      setCart([...cart, product]);
     }
   };
 
@@ -59,6 +62,24 @@ export function CartProvider({ children }) {
     setCart([]);
     console.log('Soy el carro actualizado', cart)
   };
+
+  //TO DO:
+
+  // //Calcular el precio total
+  // function totalAPagar(product){
+  //   const precioTotal=0;
+  //   for (const [index, item] of cart.entries()) {
+  //      precioTotal = product[index].cantidad * product[index].price;
+  //   }
+  //   console.log('soy el precio final', precioTotal)
+  //   return precioTotal;
+  // }
+  // totalAPagar();
+
+  //TO DO
+  //Calcular total productos para mostrar en navbar
+
+
 
   useEffect(() => {
     function traerData() {
@@ -79,4 +100,3 @@ export function CartProvider({ children }) {
     </CartContext.Provider>
   )
 };
-

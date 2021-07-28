@@ -5,6 +5,7 @@ import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import { Container } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { ItemCountComponent } from "../ItemCountComponent";
 
 export function CartComponent() {
 
@@ -13,19 +14,16 @@ export function CartComponent() {
 
 
   useEffect(() => {
+  }, [])
 
-    console.log(cart.length);
-
-  }, [cart.length])
+  console.log('soy cart', cart);
 
   return (
-
     <>
-
       {cart.length === 0 ?
         <Container>
           <h4>¡No hay productos en tu carrito!</h4>
-          <Link to={'/'}>Ver productos</Link>
+          <Link to={'/'}>Ir al inicio</Link>
         </Container>
         :
         <Container>
@@ -45,13 +43,12 @@ export function CartComponent() {
                   return (
                     <>
                       <tr>
-                        <th>{index+1}</th>
+                        <th>{index + 1}</th>
                         <th>{product.item}</th>
                         <th>{product.cantidad}</th>
-                        <th>{product.precio}</th>
+                        <th>{product.price}</th>
                         <th><DeleteForeverOutlinedIcon onClick={() => { removeItemToCart(product.id) }} /></th>
                       </tr>
-
                     </>
                   )
                 })
