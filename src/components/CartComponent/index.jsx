@@ -5,13 +5,10 @@ import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined'
 import { Container } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { ItemCountComponent } from "../ItemCountComponent";
 
 export function CartComponent() {
 
-  const { cart, removeItemToCart, clearTheCart } = useContext(CartContext);
-
-
+  const { cart, removeItemToCart, clearTheCart, total , totalItems } = useContext(CartContext);
 
   useEffect(() => {
   }, [])
@@ -53,6 +50,11 @@ export function CartComponent() {
                   )
                 })
               }
+              <th></th>
+              <th>Total a pagar</th>
+              <th>{totalItems}</th>
+              <th>{total}</th>
+              <th></th>
             </tbody>
           </Table>
           <Button onClick={clearTheCart} variant="outline-primary">Eliminar todo</Button>

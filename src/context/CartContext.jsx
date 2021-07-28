@@ -12,11 +12,30 @@ export function CartProvider({ children }) {
   const [isAdded, setIsAdded] = useState(false);
   const [quantity, setQuantity] = useState();
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState();
+  const [totalItems, setTotalItems] = useState();
 
-  function onAdd(id, quantity, product) {
+  useEffect(() => {
+    //Calcular total a pagar
+    let precioFinal = 0;
+    let precioTotal = cart.map(element => element.price);
+    //Calcular cantidad de items en el carrito
+    let cantidadItems = 0;
+    let totalItems = cart.map(element => element.cantidad);
+
+    for (let i = 0; i < precioTotal.length; i++) {
+      precioFinal += precioTotal[i];
+      cantidadItems += totalItems[i];
+    }
+
+    setTotal(precioFinal);
+    setTotalItems(cantidadItems);
+  }, [cart]);
+
+  function onAdd(id, quantity, precio, product) {
     setAddToCart(true);
     setIsAdded(true);
-    shoppingCart(id, quantity, product);
+    shoppingCart(id, quantity, precio, product);
   }
 
   //Comprobando si el producto existe en el carrito
@@ -30,14 +49,14 @@ export function CartProvider({ children }) {
   }
 
   // Agregar al carrito 
-  function shoppingCart(id, quantity, product) {
+  function shoppingCart(id, quantity, precio, product) {
     // Si el producto existe en el carrito ...
     if (isInCart(id)) {
       const previousProduct = cart.find(producto => producto.id === id);
       // calcular cantidad total
       const newQuantity = previousProduct.cantidad + quantity;
       // calcular precio total del producto
-      const newPrice = newQuantity * previousProduct.price;
+      const newPrice = newQuantity * precio;
       // actualizar info producto
       const newProduct = { "id": previousProduct.id, "item": previousProduct.item, "cantidad": newQuantity, "price": newPrice };
       const previousCart = cart.filter(product => product.id !== id);
@@ -63,23 +82,8 @@ export function CartProvider({ children }) {
     console.log('Soy el carro actualizado', cart)
   };
 
-  //TO DO:
-
-  // //Calcular el precio total
-  // function totalAPagar(product){
-  //   const precioTotal=0;
-  //   for (const [index, item] of cart.entries()) {
-  //      precioTotal = product[index].cantidad * product[index].price;
-  //   }
-  //   console.log('soy el precio final', precioTotal)
-  //   return precioTotal;
-  // }
-  // totalAPagar();
-
   //TO DO
   //Calcular total productos para mostrar en navbar
-
-
 
   useEffect(() => {
     function traerData() {
@@ -95,7 +99,7 @@ export function CartProvider({ children }) {
   }, [])
 
   return (
-    <CartContext.Provider value={{ listadoProductos, onAdd, addToCart, isAdded, setAddToCart, setIsAdded, quantity, setQuantity, cart, removeItemToCart, clearTheCart }}>
+    <CartContext.Provider value={{ listadoProductos, onAdd, addToCart, isAdded, setAddToCart, setIsAdded, quantity, setQuantity, cart, removeItemToCart, clearTheCart, total, totalItems }}>
       {listadoProductos.length > 0 ? children : <Spinner animation="border" variant="info" />}
     </CartContext.Provider>
   )

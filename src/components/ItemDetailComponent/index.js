@@ -32,7 +32,7 @@ export function ItemDetailComponent({ img, nombre, descripcion, precio, stock, i
 
             {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
 
-            {isAdded ? <Button onClick={onAdd} variant="outline-primary"><Link to={"/cart"}>Terminar la compra</Link></Button> : <Button onClick={() => { onAdd(id, quantity, { "item": nombre, "cantidad": quantity, "id": id, "price": precio }) }} variant="outline-primary">Agregar al carrito</Button>}
+            {isAdded ? <Button onClick={onAdd} variant="outline-primary"><Link to={"/cart"}>Terminar la compra</Link></Button> : <Button onClick={() => { onAdd(id, quantity, precio, { "item": nombre, "cantidad": quantity, "id": id, "price": (precio*quantity) }) }} variant="outline-primary">Agregar al carrito</Button>}
           </Col>
         </Row>
       </Container>
