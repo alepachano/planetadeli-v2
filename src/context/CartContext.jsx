@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
-import listaProductos from "../bd/listaProductos.json"
+import { getFirestore } from "../firebase";
 
 // crear el contexto
 export const CartContext = createContext();
@@ -16,21 +16,31 @@ export function CartProvider({ children }) {
   const [totalItems, setTotalItems] = useState();
 
   useEffect(() => {
-    //Calcular total a pagar
-    let precioFinal = 0;
-    let precioTotal = cart.map(element => element.price);
+    //Para traer la colección de productos
+    async function getDataFromFirestore() {
+      const BD = getFirestore();
+      //se coloca como parámetro el nombre de la colección
+      const collection = BD.collection('productos');
+      //traer los datos
+      const response = await collection.get();
+      setListadoProductos(response.docs.map(element => ({ id: element.id, ...element.data() })));
+      console.log('me ejecute')
+    }
+    getDataFromFirestore();
+
     //Calcular cantidad de items en el carrito
     let cantidadItems = 0;
-    let totalItems = cart.map(element => element.cantidad);
+    //Calcular total a pagar
+    let precioFinal = 0;
 
-    for (let i = 0; i < precioTotal.length; i++) {
-      precioFinal += precioTotal[i];
-      cantidadItems += totalItems[i];
-    }
+    cart.forEach(element => {
+      precioFinal += element.price;
+      cantidadItems += element.cantidad;
+    })
 
     setTotal(precioFinal);
     setTotalItems(cantidadItems);
-  }, [cart]);
+  }, [cart])
 
   function onAdd(id, quantity, precio, product) {
     setAddToCart(true);
@@ -73,30 +83,12 @@ export function CartProvider({ children }) {
   function removeItemToCart(id) {
     const newCart = cart.filter(product => product.id !== id);
     setCart(newCart);
-    console.log('Soy el carro actualizado', cart)
   };
 
   //Eliminar todos los productos del carrito
   function clearTheCart() {
     setCart([]);
-    console.log('Soy el carro actualizado', cart)
   };
-
-  //TO DO
-  //Calcular total productos para mostrar en navbar
-
-  useEffect(() => {
-    function traerData() {
-      setTimeout(() => {
-        new Promise((resolve, reject) => {
-          resolve(listaProductos);
-          setListadoProductos(listaProductos);
-        });
-      }, 2000)
-    };
-
-    traerData();
-  }, [])
 
   return (
     <CartContext.Provider value={{ listadoProductos, onAdd, addToCart, isAdded, setAddToCart, setIsAdded, quantity, setQuantity, cart, removeItemToCart, clearTheCart, total, totalItems }}>
