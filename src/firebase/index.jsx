@@ -17,6 +17,7 @@ export const getFirebase = () => {
 }
 
 // Crea la conexion con el servicio de Firestore
+// Entra a firebase, utilizaremos firestore, y lo utilizaremos desde APP
 export const getFirestore = () => {
   return firebase.firestore(app);
 }

@@ -10,10 +10,8 @@ import { Button } from "react-bootstrap";
 import { ItemCountComponent } from "../../components/ItemCountComponent";
 import { Link } from "react-router-dom";
 
-export function ItemDetailComponent({ img, nombre, descripcion, precio, stock, id }) {
-  const { onAdd, addToCart, isAdded, quantity, cart } = useContext(CartContext)
-
-  console.log('soy cart', cart)
+export function ItemDetailComponent({ img, name, description, price, id, stock }) {
+  const { onAdd, addToCart, isAdded, quantity } = useContext(CartContext)
 
   return (
     <>
@@ -24,15 +22,15 @@ export function ItemDetailComponent({ img, nombre, descripcion, precio, stock, i
           </Col>
           <Col>
             <Typography>
-              <h4>{nombre}</h4>
-              <h5>CLP {precio}</h5>
-              <h5>{descripcion}</h5>
+              <h4>{name}</h4>
+              <h5>CLP {price}</h5>
+              <h5>{description}</h5>
               <h5>Stock: {stock} </h5>
             </Typography>
 
             {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
 
-            {isAdded ? <Button onClick={onAdd} variant="outline-primary"><Link to={"/cart"}>Terminar la compra</Link></Button> : <Button onClick={() => { onAdd(id, quantity, precio, { "item": nombre, "cantidad": quantity, "id": id, "price": (precio*quantity) }) }} variant="outline-primary">Agregar al carrito</Button>}
+            {isAdded ? <Button onClick={onAdd} variant="outline-primary"><Link to={'/cart'}>Terminar la compra</Link></Button> : <Button onClick={() => { onAdd(id, quantity, price, { "item": name, "cantidad": quantity, "id": id, "price": (price * quantity) }) }} variant="outline-primary">Agregar al carrito</Button>}
           </Col>
         </Row>
       </Container>

@@ -6,8 +6,7 @@
     "categoriaId": "utensilios",
     "precio": 8000,
     "imagen": "https://http2.mlstatic.com/D_NQ_NP_979524-MLU46386482982_062021-O.jpg",
-    "stock": 60,
-    "cantidadCompra": 0
+    "stock": 60
   },
   {
     "id": 2,
@@ -16,8 +15,7 @@
     "categoriaId": "utensilios",
     "precio": 15000,
     "imagen": "https://www.cherrychile.cl/uploads/productos/ae636b0f.jpg",
-    "stock": 45,
-    "cantidadCompra": 0
+    "stock": 45
   },
   {
     "id": 3,
@@ -26,8 +24,7 @@
     "categoriaId": "batidoras",
     "precio": 300000,
     "imagen": "https://images-na.ssl-images-amazon.com/images/I/8157Lc9KdpL._AC_SX466_.jpg",
-    "stock": 55,
-    "cantidadCompra": 0
+    "stock": 55
   },
   {
     "id": 4,
@@ -36,8 +33,7 @@
     "categoriaId": "batidoras",
     "precio": 110000,
     "imagen": "https://images-na.ssl-images-amazon.com/images/I/61iCK0cJzyL._AC_SX679_.jpg",
-    "stock": 35,
-    "cantidadCompra": 0
+    "stock": 35
   },
   {
     "id": 5,
@@ -46,8 +42,7 @@
     "categoriaId": "hornos",
     "precio": 250000,
     "imagen": "https://cdn.shopify.com/s/files/1/0104/4391/5319/products/19109.jpg?v=1586439867",
-    "stock": 32,
-    "cantidadCompra": 0
+    "stock": 32
   },
   {
     "id": 6,
@@ -56,7 +51,6 @@
     "categoriaId": "hornos",
     "precio": 350000,
     "imagen": "https://images.lider.cl/wmtcl?source=url[file:/productos/1142007c.jpg]&sink",
-    "stock": 28,
-    "cantidadCompra": 0
+    "stock": 28
   }
 ]

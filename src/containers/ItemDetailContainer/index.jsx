@@ -12,7 +12,13 @@ export function ItemDetailContainer() {
 
   useEffect(() => {
     if (id) {
-      const idProducto = listadoProductos.find(product => product.id === parseInt(id))
+      // const BD = getFirestore();
+      // const collection = BD.collection('productos');
+      // const response = collection.doc(id);
+      // response.get().then((result) => {
+      //   setProducto({ id: result.id, ...result.data() })
+      // }),
+      const idProducto = listadoProductos.find(product => product.id === id)
       setProducto(idProducto);
       setAddToCart(false);
       setIsAdded(false);
@@ -22,7 +28,7 @@ export function ItemDetailContainer() {
   return (
     <>
       <Container >
-        <ItemDetailComponent key={producto.id} id={producto.id} img={producto.imagen} nombre={producto.nombre} descripcion={producto.descripcion} precio={producto.precio} stock={producto.stock} />
+        <ItemDetailComponent key={producto.id} img={producto.image} name={producto.title} description={producto.description} price={producto.price} id={producto.id} stock={producto.stock} />
       </Container>
     </>
   )
