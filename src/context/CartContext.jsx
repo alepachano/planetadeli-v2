@@ -12,7 +12,7 @@ export function CartProvider({ children }) {
   const [isAdded, setIsAdded] = useState(false);
   const [quantity, setQuantity] = useState();
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState();
+  const [totalAPagar, setTotalAPagar] = useState();
   const [totalItems, setTotalItems] = useState();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export function CartProvider({ children }) {
       cantidadItems += element.cantidad;
     })
 
-    setTotal(precioFinal);
+    setTotalAPagar(precioFinal);
     setTotalItems(cantidadItems);
   }, [cart])
 
@@ -69,6 +69,7 @@ export function CartProvider({ children }) {
       const newPrice = newQuantity * precio;
       // actualizar info producto
       const newProduct = { "id": previousProduct.id, "item": previousProduct.item, "cantidad": newQuantity, "price": newPrice };
+      // TO DO probar si me lo puedo traer con SPREAD OPERATOR tomando de ejemplo setForm({ ...form, name: event.target.value, }) 
       const previousCart = cart.filter(product => product.id !== id);
       // agrego el nuevo producto
       const newCart = [...previousCart, newProduct];
@@ -91,7 +92,7 @@ export function CartProvider({ children }) {
   };
 
   return (
-    <CartContext.Provider value={{ listadoProductos, onAdd, addToCart, isAdded, setAddToCart, setIsAdded, quantity, setQuantity, cart, removeItemToCart, clearTheCart, total, totalItems }}>
+    <CartContext.Provider value={{ listadoProductos, onAdd, addToCart, isAdded, setAddToCart, setIsAdded, quantity, setQuantity, cart, removeItemToCart, clearTheCart, totalAPagar, totalItems }}>
       {listadoProductos.length > 0 ? children : <Spinner animation="border" variant="info" />}
     </CartContext.Provider>
   )

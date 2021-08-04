@@ -1,19 +1,32 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import Table from 'react-bootstrap/Table';
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
-import { Container } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import { getFirestore } from "../../firebase";
 
 export function CartComponent() {
-
-  const { cart, removeItemToCart, clearTheCart, total , totalItems } = useContext(CartContext);
+  const [form, setForm] = useState({ name: '', email: '', phone: '' });
+  const { cart, removeItemToCart, clearTheCart, totalAPagar, totalItems } = useContext(CartContext);
 
   useEffect(() => {
+
   }, [])
 
-  console.log('soy cart', cart);
+  function generarPedido() {
+    const pedido = { buyer: { ...form }, items: cart, total: totalAPagar }
+    console.log('Pedido: ', pedido);
+
+    const BD = getFirestore();
+    const collection = BD.collection('pedidos');
+    // Para mostrar el id de pedido al comprador
+    collection.add(pedido).then(({ id }) => {
+      alert(`EL ID DE LA COMPRA ES: ${id}`)
+    });
+  };
 
   return (
     <>
@@ -53,11 +66,35 @@ export function CartComponent() {
               <th></th>
               <th>Total a pagar</th>
               <th>{totalItems}</th>
-              <th>{total}</th>
+              <th>{totalAPagar}</th>
               <th></th>
             </tbody>
           </Table>
           <Button onClick={clearTheCart} variant="outline-primary">Eliminar todo</Button>
+
+          <Form>
+            <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+              <Form.Control type="text" placeholder="Name" onInput={(event) => {
+                setForm({ ...form, name: event.target.value, })
+              }} />
+              <Form.Control type="email" placeholder="Email" onInput={(event) => {
+                setForm({ ...form, email: event.target.value })
+              }} />
+              <Form.Control type="tel" placeholder="Phone" onInput={(event) => {
+                setForm({ ...form, phone: event.target.value })
+              }} />
+            </Form.Group>
+            <Button onClick={generarPedido}>Enviar datos</Button>
+
+            {/* Para ingresar productos de manera masiva en Firestore
+              const Batch = BD.batch();
+              const elementos = [{ JSON }];
+              for (let i = 0; i < elementos.length; i++) {
+              BD.collection('productos').add(elementos[i]).then((response) => {
+              console.log(response);
+              })
+              }; */}
+          </Form>
         </Container>
       }
     </>
