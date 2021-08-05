@@ -1,3 +1,5 @@
+import './style.css';
+import sadCart from '../.././sad-cart.png';
 import { useEffect, useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import Table from 'react-bootstrap/Table';
@@ -32,8 +34,15 @@ export function CartComponent() {
     <>
       {cart.length === 0 ?
         <Container>
-          <h4>¡No hay productos en tu carrito!</h4>
-          <Link to={'/'}>Ir al inicio</Link>
+          <div className="carritoVacio">
+            <h3>¡No hay productos en tu carrito de compras!</h3>
+            <div>
+              <img className="sadCart" src={sadCart} />
+            </div>
+            <div className="carritoVacio">
+              <Button variant="info" ><Link to={'/'} className="link-style">Volver al inicio</Link></Button>
+            </div>
+          </div>
         </Container>
         :
         <Container>

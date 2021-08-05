@@ -9,23 +9,34 @@ import { CartContext } from '../../context/CartContext';
 import { Button } from "react-bootstrap";
 import { ItemCountComponent } from "../../components/ItemCountComponent";
 import { Link } from "react-router-dom";
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
-export function ItemDetailComponent({ img, name, description, price, id, stock }) {
+export function ItemDetailComponent({ img, name, sku, description, price, id, stock, categoryId }) {
   const { onAdd, addToCart, isAdded, quantity } = useContext(CartContext)
 
   return (
     <>
       <Container>
         <Row>
+          <Breadcrumb className="breadcrumb">
+            <Breadcrumb.Item><Link to={'/'}>Home</Link></Breadcrumb.Item>
+            <Breadcrumb.Item className="title"><Link to={`/category/${categoryId}`}>{categoryId}</Link></Breadcrumb.Item>
+            <Breadcrumb.Item active>{name}</Breadcrumb.Item>
+          </Breadcrumb>
+        </Row>
+        <Row>
           <Col>
             <Image src={img} rounded className="imgProducto" />
           </Col>
           <Col>
             <Typography>
+              <h6>SKU {sku}</h6>
               <h4>{name}</h4>
               <h5>CLP {price}</h5>
-              <h5>{description}</h5>
-              <h5>Stock: {stock} </h5>
+              <h6>Quedan {stock} unidades</h6>
+              <h5>Caracteristicas del producto:
+                {description}
+              </h5>
             </Typography>
 
             {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
