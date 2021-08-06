@@ -33,7 +33,7 @@ export function ItemListContainer() {
   return (
     <>
       <Container>
-        <h2 className="title">{id}</h2>
+        <h2 className="title text-center">{id}</h2>
         <div className="cards-group">
           {
             listaCategorias.map((producto) => {

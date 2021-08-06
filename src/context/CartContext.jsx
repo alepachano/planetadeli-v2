@@ -69,7 +69,7 @@ export function CartProvider({ children }) {
       // calcular precio total del producto
       const newPrice = newQuantity * precio;
       // actualizar info producto
-      const newProduct = { "id": previousProduct.id, "item": previousProduct.item, "cantidad": newQuantity, "price": newPrice };
+      const newProduct = { "id": previousProduct.id, "image": previousProduct.image , "item": previousProduct.item, "cantidad": newQuantity, "unitPrice": previousProduct.unitPrice, "price": newPrice };
       // TO DO probar si me lo puedo traer con SPREAD OPERATOR tomando de ejemplo setForm({ ...form, name: event.target.value, }) 
       const previousCart = cart.filter(product => product.id !== id);
       // agrego el nuevo producto
@@ -79,6 +79,7 @@ export function CartProvider({ children }) {
     } else {
       setCart([...cart, product]);
     }
+    console.log('soy cart', cart);
   };
 
   //Eliminar producto del carrito

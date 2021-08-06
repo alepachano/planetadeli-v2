@@ -3,10 +3,6 @@
   height: 400px;
 }
 
-.title {
-  text-transform: capitalize;
-}
-
 .breadcrumb {
   background-color: white;
   padding: 5px;
@@ -25,3 +21,12 @@
   margin: auto;
 }
 
+.goToCart {
+text-decoration: none;
+color: white;
+}
+
+.goToCart:hover {
+  text-decoration: none;
+  color: white;
+}

@@ -1,7 +1,10 @@
 .title {
   text-transform: capitalize;
-  text-align: center;
 };
+
+.text-center {
+  text-align: center;
+}
 
 .cards-group {
   display: flex;
