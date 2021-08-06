@@ -1,3 +1,4 @@
+import './style.css';
 import { useEffect, useState, useContext } from "react";
 import { Container } from "react-bootstrap";
 import { ItemDetailComponent } from "../../components/ItemDetailComponent";

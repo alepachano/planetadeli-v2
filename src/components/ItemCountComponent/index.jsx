@@ -1,3 +1,4 @@
+import './style.css';
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 
@@ -21,10 +22,10 @@ export function ItemCountComponent({ cantidadMinima, stock }) {
   setQuantity(cantidad);
 
   return (
-    <div>
-      <button onClick={() => { disminuir() }}> - </button>
-      {contador}
-      <button onClick={() => { aumentar() }}> + </button>
+    <div className="countComponent">
+      <button className="button-increment-decrement" onClick={() => { disminuir() }}> - </button>
+      <div className="counter">{contador}</div>
+      <button className="button-increment-decrement" onClick={() => { aumentar() }}> + </button>
     </div>
   )
 };

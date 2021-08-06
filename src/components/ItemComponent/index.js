@@ -1,8 +1,7 @@
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
-import CardGroup from 'react-bootstrap/CardGroup';
 import './style.css';
+import { Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 
 export function ItemComponent({ img, name, sku, price, id }) {
   return (
@@ -12,10 +11,10 @@ export function ItemComponent({ img, name, sku, price, id }) {
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>SKU: {sku}</Card.Text>
-          <Card.Text><strong>CLP {price}</strong></Card.Text>
+          <Card.Text className="price">CLP {price}</Card.Text>
         </Card.Body>
-        <Card.Footer>
-          <Button variant="outline-primary"><Link to={`/item/${id}`}> Ver producto </Link></Button>
+        <Card.Footer className="cardFooter">
+          <Link to={`/item/${id}`}> Ver producto </Link>
         </Card.Footer>
       </Card>
     </CardGroup>

@@ -1,3 +1,4 @@
+import './style.css';
 import { createContext, useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { getFirestore } from "../firebase";

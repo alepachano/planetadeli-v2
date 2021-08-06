@@ -11,3 +11,17 @@
   background-color: white;
   padding: 5px;
 }
+
+.row-description {
+  margin-top: 20px;
+}
+
+.flex {
+  display: flex;
+}
+
+.buttonAddToCart{
+  width: 400px;
+  margin: auto;
+}
+
