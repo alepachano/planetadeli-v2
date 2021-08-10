@@ -19,22 +19,18 @@ export function CartProvider({ children }) {
 
 
   useEffect(() => {
-
-    localStorage.setItem('cartStorage', JSON.stringify(cart));
     let storageValues = localStorage.cartStorage;
-    // let cartStorage = localStorage.cartStorage
-    // cartStorage = JSON.stringify(cart);
     console.log('soy el storage', storageValues)
 
     // Validar el local storage
-    // function localStorageValidation() {
-    //   if (storageValues === null) {
-    //     console.log('estoy vacio', cart)
-    //   } else {
-    //     return cart;
-    //   }
-    // }
-    // localStorageValidation()
+    function localStorageValidation() {
+      if (storageValues === undefined) {
+        console.log('estoy vacio', cart)
+      } else {
+        localStorage.setItem('cartStorage', JSON.stringify(cart));
+      }
+    }
+    localStorageValidation()
 
     //Para traer la colección de productos
     async function getDataFromFirestore() {

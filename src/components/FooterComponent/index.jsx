@@ -5,7 +5,7 @@ export function Footer() {
 	return (
 		<>
 			<Container>
-				<Row>
+				<Row className="footer">
 					<Col>
 						<div>
 							<h6 className="text-center">PLANETA DELI</h6>
@@ -33,24 +33,24 @@ export function Footer() {
 						<div>
 							<h6 className="text-center">Contáctanos</h6>
 							<div>
-								<h6>¡y síguenos en nuestras redes sociales!</h6>
+								<h6 className="text-center">¡y síguenos en nuestras redes sociales!</h6>
 							</div>
 						</div>
 					</Col>
 
 					<Col>
 						<div>
-							<h4 className="text-center">Envíos</h4>
+							<h6 className="text-center">Envíos</h6>
 						</div>
 						<div >
-							<h6>Realizamos envíos a toda la Región Metropolitana</h6>
+							<h6 className="text-center">Realizamos envíos a toda la Región Metropolitana</h6>
 						</div>
 					</Col>
 				</Row>
 
-				<Row>
+				<Row className="copyright">
 					<div >
-						<p>COPYRIGHT © 2021. Planeta Deli</p>
+						<p className="text-center">COPYRIGHT © 2021. Planeta Deli</p>
 					</div>
 				</Row>
 			</Container >
