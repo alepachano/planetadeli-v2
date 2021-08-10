@@ -1,0 +1,59 @@
+.carritoVacio {
+  text-align: center;
+  margin: 15px;
+}
+
+.sadCart {
+  margin: 15px;
+}
+
+.link-style {
+  color: white;
+  text-decoration: none;
+}
+
+.button-style:hover {
+  background-color: #0dceda;
+}
+
+.link-style:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.table-head {
+  margin-top: 30px;
+}
+
+.imgCart {
+  height: 60px;
+  width: 60px;
+}
+
+.table th, .table td {
+  vertical-align: baseline;
+}
+
+.itemCart {
+  text-align: -webkit-center;
+  vertical-align: bottom;
+}
+
+.summary {
+  padding: 15px;
+  background-color: #f6f4f2;
+  border-radius: 8px;
+}
+
+.cart-summary {
+  width: 280px;
+  height: auto;
+  position: absolute;
+  margin-top: 30px;
+
+}
+
+.title-summary {
+  font-weight: 700;
+  font-size: 25px;
+}

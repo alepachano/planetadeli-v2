@@ -1,3 +1,5 @@
+import './style.css';
+import sadCart from '../.././sad-cart.png';
 import { useEffect, useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import Table from 'react-bootstrap/Table';
@@ -7,10 +9,12 @@ import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { getFirestore } from "../../firebase";
+import Col from 'react-bootstrap/Col';
+import { ArrowLeft } from 'react-bootstrap-icons';
 
 export function CartComponent() {
   const [form, setForm] = useState({ name: '', email: '', phone: '' });
-  const { cart, removeItemToCart, clearTheCart, totalAPagar, totalItems } = useContext(CartContext);
+  const { cart, removeItemToCart, clearTheCart, totalAPagar } = useContext(CartContext);
 
   useEffect(() => {
 
@@ -32,47 +36,76 @@ export function CartComponent() {
     <>
       {cart.length === 0 ?
         <Container>
-          <h4>¡No hay productos en tu carrito!</h4>
-          <Link to={'/'}>Ir al inicio</Link>
+          <div className="carritoVacio">
+            <h3>¡No hay productos en tu carrito de compras!</h3>
+            <div>
+              <img className="sadCart" src={sadCart} />
+            </div>
+            <div className="carritoVacio">
+              <Button variant="info"><Link to={'/'} className="link-style">Volver al inicio</Link></Button>
+            </div>
+          </div>
         </Container>
         :
         <Container>
-          <Table hover>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                cart.map((product, index) => {
-                  return (
-                    <>
-                      <tr>
-                        <th>{index + 1}</th>
-                        <th>{product.item}</th>
-                        <th>{product.cantidad}</th>
-                        <th>{product.price}</th>
-                        <th><DeleteForeverOutlinedIcon onClick={() => { removeItemToCart(product.id) }} /></th>
-                      </tr>
-                    </>
-                  )
-                })
-              }
-              <th></th>
-              <th>Total a pagar</th>
-              <th>{totalItems}</th>
-              <th>{totalAPagar}</th>
-              <th></th>
-            </tbody>
-          </Table>
-          <Button onClick={clearTheCart} variant="outline-primary">Eliminar todo</Button>
+          <h2 className="text-center">Carrito de Compras</h2>
+          <Row>
+            <Col>
+              <Table className="table-head text-center" hover>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody >
+                  {
+                    cart.map(product => {
+                      return (
+                        <>
+                          <tr>
+                            <th><img className="imgCart" src={product.image} /></th>
+                            <th className="itemCart">
+                              <tr>{product.item}</tr>
+                              <tr>SKU: {product.sku}</tr>
+                            </th>
+                            <th>{product.cantidad}</th>
+                            <th>{product.unitPrice}</th>
+                            <th>{product.price}</th>
+                            <th><DeleteForeverOutlinedIcon onClick={() => { removeItemToCart(product.id) }} /></th>
+                          </tr>
+                        </>
+                      )
+                    })
+                  }
+                </tbody>
+              </Table>
+              <Button variant="danger" onClick={clearTheCart}>Vaciar carrito</Button>
+            </Col>
+            <Col xs={3}>
+              <div className="cart-summary">
+                <div className="summary">
+                  <h6 className="title-summary">Resumen de la compra</h6>
+                  <Table>
+                    <tr>
+                      <th>Total del pedido</th>
+                      <th>${totalAPagar}</th>
+                    </tr>
+                  </Table>
+                  <div className="text-center">
+                    <Button variant="info">Completar la compra</Button>
+                  </div>
+                </div>
+                <div className="text-center"><Link to={'/'}><ArrowLeft /> Agregar mas productos</Link></div>
+              </div>
+            </Col>
+          </Row>
 
-          <Form>
+          {/* <Form>
             <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
               <Form.Control type="text" placeholder="Name" onInput={(event) => {
                 setForm({ ...form, name: event.target.value, })
@@ -84,9 +117,9 @@ export function CartComponent() {
                 setForm({ ...form, phone: event.target.value })
               }} />
             </Form.Group>
-            <Button onClick={generarPedido}>Enviar datos</Button>
+            <Button onClick={generarPedido}>Enviar datos</Button> */}
 
-            {/* Para ingresar productos de manera masiva en Firestore
+          {/* Para ingresar productos de manera masiva en Firestore
               const Batch = BD.batch();
               const elementos = [{ JSON }];
               for (let i = 0; i < elementos.length; i++) {
@@ -94,7 +127,7 @@ export function CartComponent() {
               console.log(response);
               })
               }; */}
-          </Form>
+          {/* </Form> */}
         </Container>
       }
     </>

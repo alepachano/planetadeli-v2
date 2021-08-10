@@ -1,8 +1,32 @@
 .imgProducto {
-    width: 500px;
-    height: 400px;
+  width: 400px;
+  height: 400px;
 }
 
-h4, h5 {
-    padding: 10px;
+.breadcrumb {
+  background-color: white;
+  padding: 5px;
+}
+
+.row-description {
+  margin-top: 20px;
+}
+
+.flex {
+  display: flex;
+}
+
+.buttonAddToCart{
+  width: 400px;
+  margin: auto;
+}
+
+.goToCart {
+text-decoration: none;
+color: white;
+}
+
+.goToCart:hover {
+  text-decoration: none;
+  color: white;
 }

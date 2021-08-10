@@ -1,3 +1,4 @@
+import './style.css';
 import { useEffect, useState, useContext } from "react";
 import { Container } from "react-bootstrap";
 import { ItemDetailComponent } from "../../components/ItemDetailComponent";
@@ -28,7 +29,7 @@ export function ItemDetailContainer() {
   return (
     <>
       <Container >
-        <ItemDetailComponent key={producto.id} img={producto.image} name={producto.title} description={producto.description} price={producto.price} id={producto.id} stock={producto.stock} />
+        <ItemDetailComponent key={producto.id} img={producto.image} sku={producto.SKU} name={producto.title} description={producto.description} price={producto.price} id={producto.id} stock={producto.stock} categoryId={producto.categoryId}/>
       </Container>
     </>
   )

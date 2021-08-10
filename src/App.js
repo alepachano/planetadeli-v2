@@ -1,4 +1,4 @@
-import './App.css';
+import './App.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import { Navbar } from './components/NavbarComponent';
 import { ItemListContainer } from './containers/ItemListContainer';
@@ -6,6 +6,7 @@ import { ItemDetailContainer } from './containers/ItemDetailContainer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { CartComponent } from './components/CartComponent';
+import { Footer } from './components/FooterComponent';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             {/* <Route path={"*"} component={() => <h1>Error 404</h1>} /> */}
           </Switch>
 
+          <Footer />
         </BrowserRouter>
       </CartProvider>
     </>

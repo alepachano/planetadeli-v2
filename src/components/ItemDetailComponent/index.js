@@ -1,36 +1,56 @@
 import './style.css';
-import Image from 'react-bootstrap/Image';
+import { useContext } from 'react';
+import { Link } from "react-router-dom";
+import { CartContext } from '../../context/CartContext';
+import { ItemCountComponent } from "../../components/ItemCountComponent";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Typography } from '@material-ui/core';
-import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Button } from "react-bootstrap";
-import { ItemCountComponent } from "../../components/ItemCountComponent";
-import { Link } from "react-router-dom";
 
-export function ItemDetailComponent({ img, name, description, price, id, stock }) {
+export function ItemDetailComponent({ img, name, sku, description, price, id, stock, categoryId }) {
   const { onAdd, addToCart, isAdded, quantity } = useContext(CartContext)
 
   return (
     <>
       <Container>
         <Row>
+          <Breadcrumb className="breadcrumb">
+            <Breadcrumb.Item><Link to={'/'}>Home</Link></Breadcrumb.Item>
+            <Breadcrumb.Item className="title"><Link to={`/category/${categoryId}`}>{categoryId}</Link></Breadcrumb.Item>
+            <Breadcrumb.Item active>{name}</Breadcrumb.Item>
+          </Breadcrumb>
+        </Row>
+        <Row>
           <Col>
-            <Image src={img} rounded className="imgProducto" />
+            <img src={img} className="imgProducto" />
           </Col>
           <Col>
-            <Typography>
-              <h4>{name}</h4>
-              <h5>CLP {price}</h5>
-              <h5>{description}</h5>
-              <h5>Stock: {stock} </h5>
-            </Typography>
+            <div>
+              <div>
+                <h1>{name}</h1>
+              </div>
 
-            {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
+              <div className="row-description">
+                <h6>SKU {sku}</h6>
+              </div>
 
-            {isAdded ? <Button onClick={onAdd} variant="outline-primary"><Link to={'/cart'}>Terminar la compra</Link></Button> : <Button onClick={() => { onAdd(id, quantity, price, { "item": name, "cantidad": quantity, "id": id, "price": (price * quantity) }) }} variant="outline-primary">Agregar al carrito</Button>}
+              <div className="row-description">
+                <h3>CLP {price}</h3>
+                <h6>Quedan {stock} unidades</h6>
+              </div>
+
+              <div className="row-description">
+                <h6>Caracteristicas del producto:</h6>
+                <p>{description}</p>
+              </div>
+
+              <div className="row-description flex">
+                {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
+                {isAdded ? <Button onClick={onAdd} variant="danger"><Link to={'/cart'} className="goToCart">Ir al carrito de compras</Link></Button> : <Button className="buttonAddToCart" onClick={() => { onAdd(id, quantity, price, { "image": img, "item": name, "sku": sku, "cantidad": quantity, "id": id, "unitPrice": price, "price": (price * quantity) }) }} variant="danger">Agregar al carrito</Button>}
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>

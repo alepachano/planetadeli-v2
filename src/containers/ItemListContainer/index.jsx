@@ -1,9 +1,10 @@
+import './style.css';
 import { useEffect, useState, useContext } from "react";
-import { Container } from "react-bootstrap";
-import { ItemComponent } from "../../components/ItemComponent";
 import { useParams } from "react-router-dom";
+import { ItemComponent } from "../../components/ItemComponent";
 import { CartContext } from "../../context/CartContext";
 import { getFirestore } from "../../firebase";
+import { Container } from "react-bootstrap";
 
 export function ItemListContainer() {
   const { listadoProductos } = useContext(CartContext)
@@ -31,17 +32,20 @@ export function ItemListContainer() {
 
   return (
     <>
-      {
-        listaCategorias.map((producto) => {
-          return (
-            <>
-              <Container>
-                <ItemComponent key={producto.id} img={producto.image} name={producto.title} description={producto.description} price={producto.price} id={producto.id} />
-              </Container>
-            </>
-          )
-        })
-      }
+      <Container>
+        <h2 className="title text-center">{id}</h2>
+        <div className="cards-group">
+          {
+            listaCategorias.map((producto) => {
+              return (
+                <>
+                  <ItemComponent key={producto.id} img={producto.image} name={producto.title} sku={producto.SKU} price={producto.price} id={producto.id} />
+                </>
+              )
+            })
+          }
+        </div>
+      </Container>
     </>
   )
 }
