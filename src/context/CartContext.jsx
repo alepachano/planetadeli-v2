@@ -16,12 +16,31 @@ export function CartProvider({ children }) {
   const [totalAPagar, setTotalAPagar] = useState();
   const [totalItems, setTotalItems] = useState();
 
+
+
   useEffect(() => {
+
+    localStorage.setItem('cartStorage', JSON.stringify(cart));
+    let storageValues = localStorage.cartStorage;
+    // let cartStorage = localStorage.cartStorage
+    // cartStorage = JSON.stringify(cart);
+    console.log('soy el storage', storageValues)
+
+    // Validar el local storage
+    // function localStorageValidation() {
+    //   if (storageValues === null) {
+    //     console.log('estoy vacio', cart)
+    //   } else {
+    //     return cart;
+    //   }
+    // }
+    // localStorageValidation()
+
     //Para traer la colección de productos
     async function getDataFromFirestore() {
       const BD = getFirestore();
       //se coloca como parámetro el nombre de la colección
-      const collection = BD.collection('productos');
+      const collection = BD.collection('productos').orderBy('title', 'asc');
       //traer los datos
       const response = await collection.get();
       setListadoProductos(response.docs.map(element => ({ id: element.id, ...element.data() })));
@@ -69,7 +88,7 @@ export function CartProvider({ children }) {
       // calcular precio total del producto
       const newPrice = newQuantity * precio;
       // actualizar info producto
-      const newProduct = { "id": previousProduct.id, "image": previousProduct.image , "item": previousProduct.item, "cantidad": newQuantity, "unitPrice": previousProduct.unitPrice, "price": newPrice };
+      const newProduct = { "id": previousProduct.id, "image": previousProduct.image, "item": previousProduct.item, "cantidad": newQuantity, "unitPrice": previousProduct.unitPrice, "price": newPrice };
       // TO DO probar si me lo puedo traer con SPREAD OPERATOR tomando de ejemplo setForm({ ...form, name: event.target.value, }) 
       const previousCart = cart.filter(product => product.id !== id);
       // agrego el nuevo producto
