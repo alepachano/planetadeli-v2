@@ -16,22 +16,9 @@ export function CartProvider({ children }) {
   const [totalAPagar, setTotalAPagar] = useState();
   const [totalItems, setTotalItems] = useState();
 
-
+  let storageValues = localStorage.cartStorage;
 
   useEffect(() => {
-    let storageValues = localStorage.cartStorage;
-    console.log('soy el storage', storageValues)
-
-    // Validar el local storage
-    function localStorageValidation() {
-      if (storageValues === undefined) {
-        console.log('estoy vacio', cart)
-      } else {
-        localStorage.setItem('cartStorage', JSON.stringify(cart));
-      }
-    }
-    localStorageValidation()
-
     //Para traer la colección de productos
     async function getDataFromFirestore() {
       const BD = getFirestore();
@@ -44,18 +31,34 @@ export function CartProvider({ children }) {
     }
     getDataFromFirestore();
 
-    //Calcular cantidad de items en el carrito
-    let cantidadItems = 0;
-    //Calcular total a pagar
-    let precioFinal = 0;
+    // Validar el local storage
+    function localStorageValidation() {
+      if (!storageValues) {
+        console.log('estoy vacio');
+      } else {
+        setCart(JSON.parse(storageValues))
+      }
+    }
+    localStorageValidation()
+  }, [])
 
-    cart.forEach(element => {
-      precioFinal += element.price;
-      cantidadItems += element.cantidad;
-    })
+  useEffect(() => {
+    function calculateTotals() {
+      //Calcular cantidad de items en el carrito
+      let cantidadItems = 0;
+      //Calcular total a pagar
+      let precioFinal = 0;
 
-    setTotalAPagar(precioFinal);
-    setTotalItems(cantidadItems);
+      cart.forEach(element => {
+        precioFinal += element.price;
+        cantidadItems += element.cantidad;
+      })
+
+      setTotalAPagar(precioFinal);
+      setTotalItems(cantidadItems);
+    }
+    calculateTotals()
+
   }, [cart])
 
   function onAdd(id, quantity, precio, product) {
@@ -94,6 +97,7 @@ export function CartProvider({ children }) {
     } else {
       setCart([...cart, product]);
     }
+    localStorage.setItem('cartStorage', JSON.stringify([...cart, product]))
     console.log('soy cart', cart);
   };
 
@@ -101,11 +105,13 @@ export function CartProvider({ children }) {
   function removeItemToCart(id) {
     const newCart = cart.filter(product => product.id !== id);
     setCart(newCart);
+    localStorage.setItem('cartStorage', JSON.stringify(newCart));
   };
 
   //Eliminar todos los productos del carrito
   function clearTheCart() {
     setCart([]);
+    localStorage.clear()
   };
 
   return (
