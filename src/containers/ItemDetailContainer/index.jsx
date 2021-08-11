@@ -13,12 +13,6 @@ export function ItemDetailContainer() {
 
   useEffect(() => {
     if (id) {
-      // const BD = getFirestore();
-      // const collection = BD.collection('productos');
-      // const response = collection.doc(id);
-      // response.get().then((result) => {
-      //   setProducto({ id: result.id, ...result.data() })
-      // }),
       const idProducto = listadoProductos.find(product => product.id === id)
       setProducto(idProducto);
       setAddToCart(false);
