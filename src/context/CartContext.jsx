@@ -45,17 +45,17 @@ export function CartProvider({ children }) {
   useEffect(() => {
     function calculateTotals() {
       //Calcular cantidad de items en el carrito
-      let cantidadItems = 0;
+      let quantityOfItems = 0;
       //Calcular total a pagar
-      let precioFinal = 0;
+      let finalPrice = 0;
 
       cart.forEach(element => {
-        precioFinal += element.price;
-        cantidadItems += element.cantidad;
+        finalPrice += element.price;
+        quantityOfItems += element.cantidad;
       })
 
-      setTotalAPagar(precioFinal);
-      setTotalItems(cantidadItems);
+      setTotalAPagar(finalPrice);
+      setTotalItems(quantityOfItems);
     }
     calculateTotals()
 

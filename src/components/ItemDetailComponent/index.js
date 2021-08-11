@@ -48,7 +48,7 @@ export function ItemDetailComponent({ img, name, sku, description, price, id, st
 
               <div className="row-description flex">
                 {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
-                {isAdded ? <Button onClick={onAdd} variant="danger"><Link to={'/cart'} className="goToCart">Ir al carrito de compras</Link></Button> : <Button className="buttonAddToCart" onClick={() => { onAdd(id, quantity, price, { "image": img, "item": name, "sku": sku, "cantidad": quantity, "id": id, "unitPrice": price, "price": (price * quantity) }) }} variant="danger">Agregar al carrito</Button>}
+                {isAdded ? <Button variant="danger"><Link to={'/cart'} className="goToCart">Ir al carrito de compras</Link></Button> : <Button className="buttonAddToCart" onClick={() => { onAdd(id, quantity, price, { "image": img, "item": name, "sku": sku, "cantidad": quantity, "id": id, "unitPrice": price, "price": (price * quantity) }) }} variant="danger">Agregar al carrito</Button>}
               </div>
             </div>
           </Col>
