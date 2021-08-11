@@ -1,6 +1,6 @@
 import './style.css';
 import sadCart from '../.././sad-cart.png';
-import { useEffect, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import Table from 'react-bootstrap/Table';
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
@@ -15,10 +15,6 @@ import { ArrowLeft } from 'react-bootstrap-icons';
 export function CartComponent() {
   const [form, setForm] = useState({ name: '', email: '', phone: '' });
   const { cart, removeItemToCart, clearTheCart, totalAPagar } = useContext(CartContext);
-
-  useEffect(() => {
-
-  }, [])
 
   function generarPedido() {
     const pedido = { buyer: { ...form }, items: cart, total: totalAPagar }
@@ -39,7 +35,7 @@ export function CartComponent() {
           <div className="carritoVacio">
             <h3>¡No hay productos en tu carrito de compras!</h3>
             <div>
-              <img className="sadCart" src={sadCart} />
+              <img className="sadCart" src={sadCart} alt="sadCart" />
             </div>
             <div className="carritoVacio">
               <Button variant="info"><Link to={'/'} className="link-style">Volver al inicio</Link></Button>
@@ -68,7 +64,7 @@ export function CartComponent() {
                       return (
                         <>
                           <tr>
-                            <th><img className="imgCart" src={product.image} /></th>
+                            <th><img className="imgCart" src={product.image} alt={product.item}/></th>
                             <th className="itemCart">
                               <tr>{product.item}</tr>
                               <tr>SKU: {product.sku}</tr>
