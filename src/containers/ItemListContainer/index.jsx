@@ -5,6 +5,8 @@ import { ItemComponent } from "../../components/ItemComponent";
 import { CartContext } from "../../context/CartContext";
 import { getFirestore } from "../../firebase";
 import { Container } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
+
 
 export function ItemListContainer() {
   const { listadoProductos } = useContext(CartContext)
@@ -35,14 +37,18 @@ export function ItemListContainer() {
       <Container>
         <h2 className="title text-center">{id}</h2>
         <div className="cards-group">
+
           {
-            listaCategorias.map((producto) => {
-              return (
-                <>
-                  <ItemComponent key={producto.id} img={producto.image} name={producto.title} sku={producto.SKU} price={producto.price} id={producto.id} />
-                </>
-              )
-            })
+            listaCategorias.length > 0 ?
+              listaCategorias.map((producto) => {
+                return (
+                  <>
+                    <ItemComponent key={producto.id} img={producto.image} name={producto.title} sku={producto.SKU} price={producto.price} id={producto.id} />
+                  </>
+                )
+              })
+              :
+              <Spinner animation="border" variant="info" />
           }
         </div>
       </Container>

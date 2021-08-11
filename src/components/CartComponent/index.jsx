@@ -44,9 +44,9 @@ export function CartComponent() {
         </Container>
         :
         <Container>
-          <h2 className="text-center">Carrito de Compras</h2>
           <Row>
             <Col>
+              <h2 className="text-center">Carrito de Compras</h2>
               <Table className="table-head text-center" hover>
                 <thead>
                   <tr>
@@ -64,7 +64,7 @@ export function CartComponent() {
                       return (
                         <>
                           <tr>
-                            <th><img className="imgCart" src={product.image} alt={product.item}/></th>
+                            <th><img className="imgCart" src={product.image} alt={product.item} /></th>
                             <th className="itemCart">
                               <tr>{product.item}</tr>
                               <tr>SKU: {product.sku}</tr>
