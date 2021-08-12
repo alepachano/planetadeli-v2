@@ -16,17 +16,22 @@
   display: flex;
 }
 
-.buttonAddToCart{
+.buttonAddToCart {
+  color: white;
   width: 400px;
   margin: auto;
+  background-color: #659dfd;
+  border: solid #659dfd 1px;
 }
 
-.goToCart {
+.buttonAddToCart:hover {
+  color: white;
+  background-color: #2364D2;
+}
+
+.goToCart, .goToCart:hover {
 text-decoration: none;
 color: white;
-}
-
-.goToCart:hover {
-  text-decoration: none;
-  color: white;
+background-color: #2364D2;
+border: solid #2364D2 1px;
 }

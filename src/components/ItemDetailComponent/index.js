@@ -3,14 +3,10 @@ import { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { CartContext } from '../../context/CartContext';
 import { ItemCountComponent } from "../../components/ItemCountComponent";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Breadcrumb from 'react-bootstrap/Breadcrumb';
-import { Button } from "react-bootstrap";
+import { Container, Row, Col, Breadcrumb, Button } from 'react-bootstrap';
 
 export function ItemDetailComponent({ img, name, sku, description, price, id, stock, categoryId }) {
-  const { onAdd, addToCart, isAdded, quantity } = useContext(CartContext)
+  const { onAdd, addToCart, isAdded, quantity } = useContext(CartContext);
 
   return (
     <>
@@ -22,10 +18,12 @@ export function ItemDetailComponent({ img, name, sku, description, price, id, st
             <Breadcrumb.Item active>{name}</Breadcrumb.Item>
           </Breadcrumb>
         </Row>
+
         <Row>
           <Col>
-            <img src={img} className="imgProducto" />
+            <img src={img} className="imgProducto" alt={name} />
           </Col>
+
           <Col>
             <div>
               <div>
@@ -48,7 +46,7 @@ export function ItemDetailComponent({ img, name, sku, description, price, id, st
 
               <div className="row-description flex">
                 {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
-                {isAdded ? <Button variant="danger"><Link to={'/cart'} className="goToCart">Ir al carrito de compras</Link></Button> : <Button className="buttonAddToCart" onClick={() => { onAdd(id, quantity, price, { "image": img, "item": name, "sku": sku, "cantidad": quantity, "id": id, "unitPrice": price, "price": (price * quantity) }) }} variant="danger">Agregar al carrito</Button>}
+                {isAdded ? <Button className="goToCart"><Link to={'/cart'} className="goToCart">Ir al carrito de compras</Link></Button> : <Button className="buttonAddToCart" onClick={() => { onAdd(id, quantity, price, { "image": img, "item": name, "sku": sku, "cantidad": quantity, "id": id, "unitPrice": price, "price": (price * quantity) }) }} variant="info">Agregar al carrito</Button>}
               </div>
             </div>
           </Col>

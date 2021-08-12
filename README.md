@@ -1,3 +1,25 @@
+# Bienvenido a Planeta Deli
+Somos una tienda virtual de productos de calidad para el mundo de la repostería. Puedes ver el proyecto en https://planeta-deli.web.app/
+
+# Proyecto Final para CoderHouse con React.
+
+Creado con [Create React App](https://github.com/facebook/create-react-app).
+
+E-commerce para Planeta Deli
+
+Hosting Firebase https://planeta-deli.web.app/
+
+React js.\
+React Router.\
+Hooks.\
+Context Api.\
+Firebase Firestore.\
+Firebase Hosting.\
+Dynamic Categories.\
+Cart Persistent.\
+Order Id with Firestore.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

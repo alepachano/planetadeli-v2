@@ -1,4 +1,10 @@
 .navbar {
     padding: 15px;
-    background-color: rgb(251, 253, 253);
+    background-color: #CDF0EA;
+}
+
+.link {
+    text-decoration: none;
+    color: #659dfd;
+    font-weight: 800;
 }

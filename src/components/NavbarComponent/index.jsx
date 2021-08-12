@@ -1,57 +1,51 @@
 import './style.css';
 import logo from '../.././logo.png';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Nav from 'react-bootstrap/Nav';
-import { CartWidget } from '../CartWidgetComponent';
-import { Link } from 'react-router-dom';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { Row, Col, Nav } from 'react-bootstrap';
+import { CartWidgetComponent } from '../CartWidgetComponent';
 import { CartContext } from '../../context/CartContext';
 
-export function Navbar() {
-
-  const { totalItems } = useContext(CartContext)
+export function NavbarComponent() {
+  const { totalItems } = useContext(CartContext);
 
   return (
     <>
-      <Container>
-        <Row className="navbar">
-          <Col md="3">
-            <Nav>
-              <Nav.Item>
-                <Link to={'/'}><img src={logo} height="80" alt="logo" /></Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
+      <Row className="navbar mb-3">
+        <Col md="3">
+          <Nav>
+            <Nav.Item>
+              <Link to={'/'}><img src={logo} height="80" alt="logo" /></Link>
+            </Nav.Item>
+          </Nav>
+        </Col>
 
-          <Col md="7">
-            <Nav className="justify-content-center">
-              <Nav.Item>
-                <Nav.Link> <Link to={'/'}>HOME</Link> </Nav.Link>
-              </Nav.Item>
+        <Col md="7">
+          <Nav className="justify-content-center">
+            <Nav.Item>
+              <Nav.Link> <Link to={'/'} className="link">HOME</Link> </Nav.Link>
+            </Nav.Item>
 
-              <Nav.Item>
-                <Nav.Link> <Link to={'/category/batidoras'}>BATIDORAS</Link> </Nav.Link>
-              </Nav.Item>
+            <Nav.Item>
+              <Nav.Link> <Link to={'/category/batidoras'} className="link">BATIDORAS</Link> </Nav.Link>
+            </Nav.Item>
 
-              <Nav.Item>
-                <Nav.Link> <Link to={'/category/hornos'}>HORNOS</Link> </Nav.Link>
-              </Nav.Item>
+            <Nav.Item>
+              <Nav.Link> <Link to={'/category/hornos'} className="link">HORNOS</Link> </Nav.Link>
+            </Nav.Item>
 
-              <Nav.Item>
-                <Nav.Link> <Link to={'/category/utensilios'}>UTENSILIOS</Link ></Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
+            <Nav.Item>
+              <Nav.Link> <Link to={'/category/utensilios'} className="link">UTENSILIOS</Link ></Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Col>
 
-          <Col md="2" >
-            <Nav className="justify-content-left">
-              <Link to={"/cart"}> <CartWidget /> {totalItems}</Link>
-            </Nav>
-          </Col>
-        </Row>
-      </Container>
+        <Col md="2" >
+          <Nav className="justify-content-left">
+            <Link to={"/cart"}> <CartWidgetComponent /> {totalItems}</Link>
+          </Nav>
+        </Col>
+      </Row>
     </>
   )
 };

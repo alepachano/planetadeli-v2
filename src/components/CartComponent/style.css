@@ -7,13 +7,32 @@
   margin: 15px;
 }
 
+.goToHome, .goToHome:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #2364D2;
+  border: solid #2364D2 1px;
+  }
+
+.buttonGeneric {
+  color: white;
+  margin: auto;
+  background-color: #659dfd;
+  border: solid #659dfd 1px;
+  margin-right: 5px;
+}
+
+.buttonGeneric:hover {
+  color: white;
+  margin: auto;
+  background-color: #2364D2;
+  border: solid #2364D2 1px;
+  margin-right: 5px;
+}
+
 .link-style {
   color: white;
   text-decoration: none;
-}
-
-.button-style:hover {
-  background-color: #0dceda;
 }
 
 .link-style:hover {
@@ -41,7 +60,7 @@
 
 .summary {
   padding: 15px;
-  background-color: #f6f4f2;
+  background-color: #d0e1ff4b;
   border-radius: 8px;
 }
 
@@ -50,14 +69,11 @@
   height: auto;
   position: absolute;
   margin-top: 30px;
-
 }
 
 .title-summary {
   font-weight: 700;
-  font-size: 25px;
 }
-
 
 .form {
   margin-top: 200px;

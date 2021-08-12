@@ -1,18 +1,13 @@
-import { useEffect } from "react";
-import { useContext, useState } from "react"
+import { useEffect, useState } from "react";
 import { CategoriesComponent } from "../../components/CategoriesComponent";
-import { CartContext } from "../../context/CartContext"
 import { getFirestore } from "../../firebase";
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
-import { Spinner } from "react-bootstrap";
-
+import { Row, Container, Spinner } from 'react-bootstrap';
 
 export function HomeContainer({ greeting }) {
   const [categories, setCategories] = useState();
 
   useEffect(() => {
-    //Para traer la colección de categorias
+    // PARA OBTENER LA COLECCION DE CATEGORIAS
     async function getDataFromFirestore() {
       const BD = getFirestore();
       const collection = BD.collection('categorias').orderBy('name', 'asc');
@@ -27,11 +22,11 @@ export function HomeContainer({ greeting }) {
     <>
       <Container>
         <Row>
-          <h4 className="text-center">{greeting}</h4>
+          <h4 className="text-center mt-3">{greeting}</h4>
           {categories ?
             categories.map((element) => {
               return (
-                <CategoriesComponent name={element.name} img={element.img} />
+                <CategoriesComponent key={element.name} name={element.name} img={element.img}  />
               )
             })
             :

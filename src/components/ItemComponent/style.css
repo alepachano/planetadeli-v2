@@ -1,10 +1,3 @@
-.cards-group {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
 .card-style {
   margin-left: 15px;
   margin-right: 15px;
@@ -17,11 +10,12 @@
   width: 280px;
 }
 
-.cardFooter{
+.footer-card{
   text-align: center;
+  text-decoration: none;
 }
 
-.price {
-  color: red;
-  font-weight: 700;
+.price-card {
+  color: #e63030;
+  font-weight: 900;
 }
