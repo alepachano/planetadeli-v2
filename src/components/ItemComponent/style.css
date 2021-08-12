@@ -1,9 +1,6 @@
-.cards-group {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 20px;
-  padding-right: 20px;
-}
+/* .card {
+  width: 330px;
+} */
 
 .card-style {
   margin-left: 15px;

@@ -6,3 +6,7 @@
 .text-uppercase {
     text-transform: uppercase;
 }
+
+.bold {
+    font-weight: 800;
+}

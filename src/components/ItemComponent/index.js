@@ -6,7 +6,7 @@ import CardGroup from 'react-bootstrap/CardGroup';
 export function ItemComponent({ img, name, sku, price, id }) {
   return (
     <CardGroup >
-      <Card  className="card-style" >
+      <Card className="card-style" >
         <Card.Img className="img-card" variant="top" src={img} alt={name} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>

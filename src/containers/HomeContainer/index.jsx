@@ -27,7 +27,7 @@ export function HomeContainer({ greeting }) {
     <>
       <Container>
         <Row>
-          <h4 className="text-center">{greeting}</h4>
+          <h4 className="text-center mt-3">{greeting}</h4>
           {categories ?
             categories.map((element) => {
               return (

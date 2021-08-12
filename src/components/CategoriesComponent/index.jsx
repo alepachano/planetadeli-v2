@@ -13,8 +13,8 @@ export function CategoriesComponent({ name, img }) {
         <Link to={`/category/${name}`}>
           <Image src={img} thumbnail alt={name} className="imgCategories m-5" />
         </Link>
-        <Row className="text-center text-uppercase">
-          <h4 >{name}</h4>
+        <Row>
+          <h4 className="text-center text-uppercase bold">{name}</h4>
         </Row>
       </Col>
     </>
