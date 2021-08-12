@@ -28,24 +28,19 @@ export function Navbar() {
           <Col md="7">
             <Nav className="justify-content-center">
               <Nav.Item>
-                <Nav.Link>
-                  <Link to={'/'}>HOME</Link>
-                </Nav.Link>
+                <Nav.Link> <Link to={'/'}>HOME</Link> </Nav.Link>
               </Nav.Item>
-              <Nav.Link>
-                <Link to={'/category/batidoras'}>BATIDORAS</Link>
-              </Nav.Link>
+
               <Nav.Item>
-                <Nav.Link>
-                  <Link to={'/category/utensilios'}>UTENSILIOS</Link>
-                </Nav.Link>
+                <Nav.Link> <Link to={'/category/batidoras'}>BATIDORAS</Link> </Nav.Link>
               </Nav.Item>
+
               <Nav.Item>
+                <Nav.Link> <Link to={'/category/hornos'}>HORNOS</Link> </Nav.Link>
               </Nav.Item>
+
               <Nav.Item>
-                <Nav.Link>
-                  <Link to={'/category/hornos'}>HORNOS</Link>
-                </Nav.Link>
+                <Nav.Link> <Link to={'/category/utensilios'}>UTENSILIOS</Link ></Nav.Link>
               </Nav.Item>
             </Nav>
           </Col>

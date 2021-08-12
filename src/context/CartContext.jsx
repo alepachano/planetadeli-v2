@@ -27,7 +27,6 @@ export function CartProvider({ children }) {
       //traer los datos
       const response = await collection.get();
       setListadoProductos(response.docs.map(element => ({ id: element.id, ...element.data() })));
-      console.log('me ejecute')
     }
     getDataFromFirestore();
 
@@ -88,7 +87,6 @@ export function CartProvider({ children }) {
       const newPrice = newQuantity * precio;
       // actualizar info producto
       const newProduct = { "id": previousProduct.id, "image": previousProduct.image, "item": previousProduct.item, "sku": previousProduct.sku, "cantidad": newQuantity, "unitPrice": previousProduct.unitPrice, "price": newPrice };
-      // TO DO probar si me lo puedo traer con SPREAD OPERATOR tomando de ejemplo setForm({ ...form, name: event.target.value, }) 
       const previousCart = cart.filter(product => product.id !== id);
       // agrego el nuevo producto
       const newCart = [...previousCart, newProduct];
