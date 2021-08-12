@@ -2,7 +2,7 @@
 import firebase from "firebase/app";
 import '@firebase/firestore';
 
-// Definir y crear la conexion con Firebase (lo da la pag web)
+// Definir y crear la conexion con Firebase (lo otorga Firebase)
 const app = firebase.initializeApp({
   apiKey: "AIzaSyC2y0B3_HGLXgN-Ly9z7biLOJpjvfgiAYs",
   authDomain: "planeta-deli.firebaseapp.com",
@@ -14,10 +14,10 @@ const app = firebase.initializeApp({
 
 export const getFirebase = () => {
   return app;
-}
+};
 
 // Crea la conexion con el servicio de Firestore
-// Entra a firebase, utilizaremos firestore, y lo utilizaremos desde APP
+// Entra a firebase, utilizaremos Firestore, y lo utilizaremos desde APP
 export const getFirestore = () => {
   return firebase.firestore(app);
-}
+};

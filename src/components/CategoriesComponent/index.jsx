@@ -1,12 +1,9 @@
 import './style.css';
-import Image from 'react-bootstrap/Image'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
 import { Link } from 'react-router-dom';
-
+import { Col, Row, Image } from 'react-bootstrap'
 
 export function CategoriesComponent({ name, img }) {
-
+  
   return (
     <>
       <Col xs={6} md={4}>

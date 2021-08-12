@@ -7,7 +7,7 @@ export function HomeContainer({ greeting }) {
   const [categories, setCategories] = useState();
 
   useEffect(() => {
-    //Para traer la colección de categorias
+    // PARA OBTENER LA COLECCION DE CATEGORIAS
     async function getDataFromFirestore() {
       const BD = getFirestore();
       const collection = BD.collection('categorias').orderBy('name', 'asc');
@@ -26,7 +26,7 @@ export function HomeContainer({ greeting }) {
           {categories ?
             categories.map((element) => {
               return (
-                <CategoriesComponent name={element.name} img={element.img} />
+                <CategoriesComponent key={element.name} name={element.name} img={element.img}  />
               )
             })
             :

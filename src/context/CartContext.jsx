@@ -1,12 +1,10 @@
 import './style.css';
 import { createContext, useEffect, useState } from "react";
 import { getFirestore } from "../firebase";
-import { Row, Container, Spinner } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 
-// crear el contexto
 export const CartContext = createContext();
 
-// componente que provee los datos
 export function CartProvider({ children }) {
   const [listadoProductos, setListadoProductos] = useState([]);
   const [addToCart, setAddToCart] = useState(false);
@@ -19,12 +17,10 @@ export function CartProvider({ children }) {
   let storageValues = localStorage.cartStorage;
 
   useEffect(() => {
-    //Para traer la colección de productos
+    // Para traer la colección de productos
     async function getDataFromFirestore() {
       const BD = getFirestore();
-      //se coloca como parámetro el nombre de la colección
       const collection = BD.collection('productos').orderBy('title', 'asc');
-      //traer los datos
       const response = await collection.get();
       setListadoProductos(response.docs.map(element => ({ id: element.id, ...element.data() })));
     }
@@ -34,17 +30,16 @@ export function CartProvider({ children }) {
     function localStorageValidation() {
       if (!storageValues) {
       } else {
-        setCart(JSON.parse(storageValues))
+        setCart(JSON.parse(storageValues));
       }
     }
-    localStorageValidation()
-  }, [])
+    localStorageValidation();
+  }, []);
 
+  // Calcular el total de items y total precio
   useEffect(() => {
     function calculateTotals() {
-      //Calcular cantidad de items en el carrito
       let quantityOfItems = 0;
-      //Calcular total a pagar
       let finalPrice = 0;
 
       cart.forEach(element => {
@@ -55,17 +50,18 @@ export function CartProvider({ children }) {
       setTotalAPagar(finalPrice);
       setTotalItems(quantityOfItems);
     }
-    calculateTotals()
+    calculateTotals();
 
-  }, [cart])
+  }, [cart]);
 
+  // Cambia los estados al seleccionar agregar al carrito
   function onAdd(id, quantity, precio, product) {
     setAddToCart(true);
     setIsAdded(true);
     shoppingCart(id, quantity, precio, product);
-  }
+  };
 
-  //Comprobando si el producto existe en el carrito
+  // Para comprobar si el producto ya existe en el carrito
   function isInCart(id) {
     const element = cart.find(producto => producto.id === id);
     if (!element) {
@@ -73,21 +69,20 @@ export function CartProvider({ children }) {
     } else {
       return true;
     }
-  }
+  };
 
   // Agregar al carrito 
   function shoppingCart(id, quantity, precio, product) {
     // Si el producto existe en el carrito ...
     if (isInCart(id)) {
       const previousProduct = cart.find(producto => producto.id === id);
-      // calcular cantidad total
+      // Calcular cantidad y precio total
       const newQuantity = previousProduct.cantidad + quantity;
-      // calcular precio total del producto
       const newPrice = newQuantity * precio;
-      // actualizar info producto
+      // Actualiza la información del producto
       const newProduct = { "id": previousProduct.id, "image": previousProduct.image, "item": previousProduct.item, "sku": previousProduct.sku, "cantidad": newQuantity, "unitPrice": previousProduct.unitPrice, "price": newPrice };
       const previousCart = cart.filter(product => product.id !== id);
-      // agrego el nuevo producto
+      // Se agrega la informacion actualizada del producto
       const newCart = [...previousCart, newProduct];
       setCart(newCart);
       // Si el producto no existe en el carrito ..
@@ -97,17 +92,17 @@ export function CartProvider({ children }) {
     localStorage.setItem('cartStorage', JSON.stringify([...cart, product]))
   };
 
-  //Eliminar producto del carrito
+  // Eliminar producto del carrito
   function removeItemToCart(id) {
     const newCart = cart.filter(product => product.id !== id);
     setCart(newCart);
     localStorage.setItem('cartStorage', JSON.stringify(newCart));
   };
 
-  //Eliminar todos los productos del carrito
+  // Eliminar TODOS los productos del carrito
   function clearTheCart() {
     setCart([]);
-    localStorage.clear()
+    localStorage.clear();
   };
 
   return (
@@ -116,9 +111,7 @@ export function CartProvider({ children }) {
         children
         :
         <Container>
-          <Row>
-            <Spinner animation="border" variant="info" />
-          </Row>
+          <Spinner animation="border" variant="info" />
         </Container>
       }
     </CartContext.Provider>
