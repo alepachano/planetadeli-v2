@@ -57,3 +57,11 @@
   font-weight: 700;
   font-size: 25px;
 }
+
+
+.form {
+  margin-top: 200px;
+  height: auto;
+  width: auto;
+  position: absolute;
+}

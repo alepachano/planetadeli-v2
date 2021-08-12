@@ -1,5 +1,6 @@
 import './App.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import error404 from './error404.jpg';
 import { Navbar } from './components/NavbarComponent';
 import { ItemListContainer } from './containers/ItemListContainer';
 import { ItemDetailContainer } from './containers/ItemDetailContainer';
@@ -32,7 +33,8 @@ function App() {
               <CartComponent />
             </Route>
 
-            {/* <Route path={"*"} component={() => <h1>Error 404</h1>} /> */}
+            {/* TO DO: hacer componente not found */}
+            <Route path={"*"} component={() => <div className="text-center"><img src={error404} className="error404" alt={'not-found'} /></div>} />
           </Switch>
 
           <Footer />
