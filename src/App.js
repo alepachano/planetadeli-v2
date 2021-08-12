@@ -1,5 +1,6 @@
 import './App.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
 import { Navbar } from './components/NavbarComponent';
 import { ItemListContainer } from './containers/ItemListContainer';
 import { ItemDetailContainer } from './containers/ItemDetailContainer';
@@ -7,6 +8,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { CartComponent } from './components/CartComponent';
 import { Footer } from './components/FooterComponent';
+import { NotFoundComponent } from './components/NotFoundComponent';
 
 function App() {
   return (
@@ -32,7 +34,9 @@ function App() {
               <CartComponent />
             </Route>
 
-            {/* <Route path={"*"} component={() => <h1>Error 404</h1>} /> */}
+            <Route path={"*"}>
+              <NotFoundComponent />
+            </Route>
           </Switch>
 
           <Footer />

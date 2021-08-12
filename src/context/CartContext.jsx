@@ -45,17 +45,17 @@ export function CartProvider({ children }) {
   useEffect(() => {
     function calculateTotals() {
       //Calcular cantidad de items en el carrito
-      let cantidadItems = 0;
+      let quantityOfItems = 0;
       //Calcular total a pagar
-      let precioFinal = 0;
+      let finalPrice = 0;
 
       cart.forEach(element => {
-        precioFinal += element.price;
-        cantidadItems += element.cantidad;
+        finalPrice += element.price;
+        quantityOfItems += element.cantidad;
       })
 
-      setTotalAPagar(precioFinal);
-      setTotalItems(cantidadItems);
+      setTotalAPagar(finalPrice);
+      setTotalItems(quantityOfItems);
     }
     calculateTotals()
 
@@ -87,7 +87,7 @@ export function CartProvider({ children }) {
       // calcular precio total del producto
       const newPrice = newQuantity * precio;
       // actualizar info producto
-      const newProduct = { "id": previousProduct.id, "image": previousProduct.image, "item": previousProduct.item, "cantidad": newQuantity, "unitPrice": previousProduct.unitPrice, "price": newPrice };
+      const newProduct = { "id": previousProduct.id, "image": previousProduct.image, "item": previousProduct.item, "sku": previousProduct.sku, "cantidad": newQuantity, "unitPrice": previousProduct.unitPrice, "price": newPrice };
       // TO DO probar si me lo puedo traer con SPREAD OPERATOR tomando de ejemplo setForm({ ...form, name: event.target.value, }) 
       const previousCart = cart.filter(product => product.id !== id);
       // agrego el nuevo producto
