@@ -1,28 +1,48 @@
 # Bienvenido a Planeta Deli
-Somos una tienda virtual de productos de calidad para el mundo de la repostería. Puedes ver el proyecto en https://planeta-deli.web.app/
+Somos una tienda virtual de productos de calidad para el área de la cocina.
+En nuestra tienda podrás encontrar batidoras, hornos y utensilios de cocina.
 
 # Proyecto Final para CoderHouse con React.
-
 Creado con [Create React App](https://github.com/facebook/create-react-app).
+Puedes visualizar el proyecto en https://planeta-deli.web.app/.
 
-E-commerce para Planeta Deli
+# Tecnologías utilizadas:
+React js.
+React-router-dom
+Hooks.
+Context Api.
+Firebase Firestore.
+Firebase Hosting: https://planeta-deli.web.app/
+Categorias dinámicas con Firestore
+Numero de orden con Firestore.
+Librerias: React-Bootstrap y Material-UI.
 
-Hosting Firebase https://planeta-deli.web.app/
+# HOME
+El home está conformado por tres categorías que agrupan los productos que se ofrecen en la tienda virtual.
+Estas categorias son recibidas de manera dinámica por medio de Firestore, colección Categorías.
 
-React js.\
-React Router.\
-Hooks.\
-Context Api.\
-Firebase Firestore.\
-Firebase Hosting.\
-Dynamic Categories.\
-Cart Persistent.\
-Order Id with Firestore.
+# CATEGORIAS
+Al hacer click en alguna de ellas, podrás observar los productos (filtrados) según la categoría seleccionada. Esta informacion es recibida por medio de Firestore, utilizando herramientas de filtrado según categoría (categoryId).
 
+# DETALLE DE PRODUCTO
+Al seleccionar "ver producto" en alguna de las categorías, podrás observar informacion detallada del producto seleccionado. En esta sección podras:
+Volver al listado de categorias o a alguna categoria especifica seleccionando la misma en el Navbar o Breadcrumb.
+Seleccionar la cantidad deseada del producto, y seleccionar "Agregar al Carrito". Si, tal como lo observas, al agregar al carrito dismiminuye el stock del producto. Una vez agregado al carrito, contarás con un nuevo botón para ir directamente al carrito de compras.
 
-# Getting Started with Create React App
+# CARRITO DE COMPRAS
+Si no cuentas con ningun carrito agregado al carrito, observarás un mensaje indicandote que el carrito de compras se encuentra vacio.
+De lo contrario, podrás observar una tabla con la información de los productos agregados al carrito: imagen, nombre, sku, cantidad, precio unitario y precio total.
+Tambien contarás con botones para eliminar un producto en especifico o en su defecto, vaciar el carrito.
+Finalmente, en el lado derecho podrás observar una pequeña tabla con un "Resumen de tu pedido", donde podrás elegir si completar la compra, o seleccionar "agregar más productos" redireccionandote al HOME (categorías).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# COMPLETAR LA COMPRA
+Una vez seleccionada esta opción, estas muy cerca a finalizar la compra.
+En ésta sección deberás llenar los campos solicitados para posteriormente contactarte:
+Nombre completo, teléfono, dirección, e-mail. 
+En esta sección tambien contarás con un botón de 'ir atrás' por si deseas modificar tu compra (añadir o eliminar productos).
+Una vez llenos estos campos, deberás seleccionar "Enviar pedido" para proceder a generar el número de orden con el que podrás realizar seguimiento a la compra". 
+Finalmente ¡Has completado tu compra! La orden se enviará y contarás con un boton de "IR AL HOME".
+
 
 ## Available Scripts
 
