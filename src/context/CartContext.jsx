@@ -1,7 +1,7 @@
 import './style.css';
 import { createContext, useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
 import { getFirestore } from "../firebase";
+import { Row, Container, Spinner } from 'react-bootstrap';
 
 // crear el contexto
 export const CartContext = createContext();
@@ -33,7 +33,6 @@ export function CartProvider({ children }) {
     // Validar el local storage
     function localStorageValidation() {
       if (!storageValues) {
-        console.log('estoy vacio');
       } else {
         setCart(JSON.parse(storageValues))
       }
@@ -96,7 +95,6 @@ export function CartProvider({ children }) {
       setCart([...cart, product]);
     }
     localStorage.setItem('cartStorage', JSON.stringify([...cart, product]))
-    console.log('soy cart', cart);
   };
 
   //Eliminar producto del carrito
@@ -114,7 +112,15 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider value={{ listadoProductos, onAdd, addToCart, isAdded, setAddToCart, setIsAdded, quantity, setQuantity, cart, removeItemToCart, clearTheCart, totalAPagar, totalItems }}>
-      {listadoProductos.length > 0 ? children : <Spinner animation="border" variant="info" />}
+      {listadoProductos.length > 0 ?
+        children
+        :
+        <Container>
+          <Row>
+            <Spinner animation="border" variant="info" />
+          </Row>
+        </Container>
+      }
     </CartContext.Provider>
   )
 };

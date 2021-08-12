@@ -1,22 +1,17 @@
 import './style.css';
 import sadCart from '../.././sad-cart.png';
 import { useContext, useState } from "react";
-import { CartContext } from "../../context/CartContext";
-import Table from 'react-bootstrap/Table';
-import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
-import { Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
 import { getFirestore } from "../../firebase";
-import Col from 'react-bootstrap/Col';
+import { CartContext } from "../../context/CartContext";
+import { Container, Col, Row, Form, Button, Table} from "react-bootstrap";
 import { ArrowLeft } from 'react-bootstrap-icons';
-import { Spinner } from "react-bootstrap";
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
 
 export function CartComponent() {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', address: '' });
   const { cart, removeItemToCart, clearTheCart, totalAPagar } = useContext(CartContext);
-  const [checkout, setCheckout] = useState(false)
+  const [form, setForm] = useState({ name: '', phone: '', email: '', address: '' });
+  const [checkout, setCheckout] = useState(false);
   const [trackingNumber, setTrackingNumber] = useState(false);
   const [orderId, setOrderId] = useState();
 
@@ -34,11 +29,11 @@ export function CartComponent() {
 
   function refreshPage() {
     window.location.reload();
-  }
+  };
 
   function goToCheckout() {
-    setCheckout(true)
-  }
+    setCheckout(true);
+  };
 
   if (checkout) {
     return (
@@ -166,6 +161,6 @@ export function CartComponent() {
           </Col>
         </Row>
       </Container>
-    )
+    );
   };
 }

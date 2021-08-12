@@ -34,7 +34,7 @@ export function FooterComponent() {
         <Col>
           <div className="text-center">
             <h6 className="mt-3 link">Contactanos</h6>
-            <h6 >¡y siguenos en nuestras redes sociales!</h6>
+            <h6>¡y siguenos en nuestras redes sociales!</h6>
             <a href='https://wa.link/0ebcou' target="blank"><WhatsAppIcon /></a>
             <a href='https://www.instagram.com/planetadeli' target="blank"><InstagramIcon /></a>
           </div>

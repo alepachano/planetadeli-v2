@@ -1,12 +1,7 @@
-import { useEffect } from "react";
-import { useContext, useState } from "react"
+import { useEffect, useState } from "react";
 import { CategoriesComponent } from "../../components/CategoriesComponent";
-import { CartContext } from "../../context/CartContext"
 import { getFirestore } from "../../firebase";
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
-import { Spinner } from "react-bootstrap";
-
+import { Row, Container, Spinner } from 'react-bootstrap';
 
 export function HomeContainer({ greeting }) {
   const [categories, setCategories] = useState();

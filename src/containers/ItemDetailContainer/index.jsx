@@ -1,15 +1,14 @@
 import './style.css';
 import { useEffect, useState, useContext } from "react";
-import { Container } from "react-bootstrap";
-import { ItemDetailComponent } from "../../components/ItemDetailComponent";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import { ItemDetailComponent } from "../../components/ItemDetailComponent";
+import { Container } from "react-bootstrap";
 
 export function ItemDetailContainer() {
-  const [producto, setProducto] = useState([]);
-
-  const { id } = useParams();
   const { listadoProductos, setAddToCart, setIsAdded } = useContext(CartContext)
+  const [producto, setProducto] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
     if (id) {

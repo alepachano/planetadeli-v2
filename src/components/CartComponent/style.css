@@ -12,10 +12,6 @@
   text-decoration: none;
 }
 
-.button-style:hover {
-  background-color: #0dceda;
-}
-
 .link-style:hover {
   color: white;
   text-decoration: none;
