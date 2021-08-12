@@ -27,7 +27,9 @@ Al hacer click en alguna de ellas, podrás observar los productos (filtrados) se
 # DETALLE DE PRODUCTO
 Al seleccionar "ver producto" en alguna de las categorías, podrás observar informacion detallada del producto seleccionado. En esta sección podras:
 Volver al listado de categorias o a alguna categoria especifica seleccionando la misma en el Navbar o Breadcrumb.
-Seleccionar la cantidad deseada del producto, y seleccionar "Agregar al Carrito". Si, tal como lo observas, al agregar al carrito dismiminuye el stock del producto. Una vez agregado al carrito, contarás con un nuevo botón para ir directamente al carrito de compras.
+Seleccionar la cantidad deseada del producto, y seleccionar "Agregar al Carrito". Si, tal como lo observas, al agregar al carrito dismiminuye el stock del producto. 
+Una vez agregado al carrito, contarás con un nuevo botón para ir directamente al carrito de compras.
+Ten en cuenta que si agregas el mismo producto en mas de una oportunidad, el producto se acumulará y no se duplicará.
 
 # CARRITO DE COMPRAS
 Si no cuentas con ningun carrito agregado al carrito, observarás un mensaje indicandote que el carrito de compras se encuentra vacio.
