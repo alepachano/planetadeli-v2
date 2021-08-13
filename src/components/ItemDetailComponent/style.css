@@ -35,3 +35,13 @@ color: white;
 background-color: #2364D2;
 border: solid #2364D2 1px;
 }
+
+.stock{
+  color: #2364D2;
+  font-weight: 600;
+}
+
+.sin-stock{
+  color: red;
+  font-weight: 600;
+}

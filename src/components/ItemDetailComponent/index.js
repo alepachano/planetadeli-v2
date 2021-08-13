@@ -1,12 +1,17 @@
 import './style.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import { CartContext } from '../../context/CartContext';
 import { ItemCountComponent } from "../../components/ItemCountComponent";
 import { Container, Row, Col, Breadcrumb, Button } from 'react-bootstrap';
 
 export function ItemDetailComponent({ img, name, sku, description, price, id, stock, categoryId }) {
-  const { onAdd, addToCart, isAdded, quantity } = useContext(CartContext);
+  const { onAdd, addToCart, setAddToCart, isAdded, setIsAdded, quantity } = useContext(CartContext);
+
+  if(stock <= 0) {
+    setIsAdded(true); 
+    setAddToCart(true);
+  }
 
   return (
     <>
@@ -36,7 +41,7 @@ export function ItemDetailComponent({ img, name, sku, description, price, id, st
 
               <div className="row-description">
                 <h3>CLP {price}</h3>
-                <h6>Quedan {stock} unidades</h6>
+                <h6 className={stock > 0 ? "stock" : "sin-stock"}>Quedan {stock} unidades</h6>
               </div>
 
               <div className="row-description">
