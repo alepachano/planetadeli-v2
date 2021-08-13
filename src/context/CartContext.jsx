@@ -13,7 +13,6 @@ export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [totalAPagar, setTotalAPagar] = useState();
   const [totalItems, setTotalItems] = useState();
-
   let storageValues = localStorage.cartStorage;
 
   useEffect(() => {
@@ -51,7 +50,6 @@ export function CartProvider({ children }) {
       setTotalItems(quantityOfItems);
     }
     calculateTotals();
-
   }, [cart]);
 
   // Cambia los estados al seleccionar agregar al carrito
@@ -59,6 +57,23 @@ export function CartProvider({ children }) {
     setAddToCart(true);
     setIsAdded(true);
     shoppingCart(id, quantity, precio, product);
+    updateStock(id, quantity, 'down');
+  };
+
+  // Actualizar STOCK de producto
+  function updateStock(id, quantity, operator) {
+    let itemRemove;
+    if (operator === 'up') {
+      itemRemove = cart.find(element => element.id === id);
+    }
+
+    const newListadoProductos = listadoProductos.map(element => {
+      if (element.id === id) {
+        element.stock = operator === 'down' ? element.stock - quantity : element.stock + itemRemove.cantidad;
+      }
+      return element;
+    });
+    setListadoProductos(newListadoProductos);
   };
 
   // Para comprobar si el producto ya existe en el carrito
@@ -94,6 +109,7 @@ export function CartProvider({ children }) {
 
   // Eliminar producto del carrito
   function removeItemToCart(id) {
+    updateStock(id, undefined, 'up');
     const newCart = cart.filter(product => product.id !== id);
     setCart(newCart);
     localStorage.setItem('cartStorage', JSON.stringify(newCart));
@@ -101,6 +117,9 @@ export function CartProvider({ children }) {
 
   // Eliminar TODOS los productos del carrito
   function clearTheCart() {
+    cart.forEach(element => {
+      updateStock(element.id, undefined, 'up');
+    });
     setCart([]);
     localStorage.clear();
   };

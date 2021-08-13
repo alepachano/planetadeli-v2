@@ -2,49 +2,55 @@
 Somos una tienda virtual de productos de calidad para el área de la cocina.
 En nuestra tienda podrás encontrar batidoras, hornos y utensilios de cocina.
 
-# Proyecto Final para CoderHouse con React.
+## Proyecto Final para CoderHouse con React.
 Creado con [Create React App](https://github.com/facebook/create-react-app).
 Puedes visualizar el proyecto en https://planeta-deli.web.app/.
 
-# Tecnologías utilizadas:
-React js.
-React-router-dom
-Hooks.
-Context Api.
-Firebase Firestore.
-Firebase Hosting: https://planeta-deli.web.app/
-Categorias dinámicas con Firestore
-Numero de orden con Firestore.
-Librerias: React-Bootstrap y Material-UI.
+## Tecnologías utilizadas:
+React js./
+React-router-dom./
+Hooks./
+Context Api./
+Firebase Firestore./
+Firebase Hosting: https://planeta-deli.web.app/ ./
+Categorias dinámicas con Firestore./
+Numero de orden con Firestore./
+Librerias: React-Bootstrap y Material-UI./
 
-# HOME
+## SECCIONES:
+
+### HOME
 El home está conformado por tres categorías que agrupan los productos que se ofrecen en la tienda virtual.
 Estas categorias son recibidas de manera dinámica por medio de Firestore, colección Categorías.
 
-# CATEGORIAS
+### CATEGORIAS
 Al hacer click en alguna de ellas, podrás observar los productos (filtrados) según la categoría seleccionada. Esta informacion es recibida por medio de Firestore, utilizando herramientas de filtrado según categoría (categoryId).
 
-# DETALLE DE PRODUCTO
+### DETALLE DE PRODUCTO
 Al seleccionar "ver producto" en alguna de las categorías, podrás observar informacion detallada del producto seleccionado. En esta sección podras:
 Volver al listado de categorias o a alguna categoria especifica seleccionando la misma en el Navbar o Breadcrumb.
-Seleccionar la cantidad deseada del producto, y seleccionar "Agregar al Carrito". Si, tal como lo observas, al agregar al carrito dismiminuye el stock del producto. 
+Seleccionar la cantidad deseada del producto, y seleccionar "Agregar al Carrito"./
 Una vez agregado al carrito, contarás con un nuevo botón para ir directamente al carrito de compras.
 Ten en cuenta que si agregas el mismo producto en mas de una oportunidad, el producto se acumulará y no se duplicará.
 
-# CARRITO DE COMPRAS
+### STOCK
+Al agregar el producto al carrito disminuye el stock del producto de manera inmediata, si agregaste todo el stock disponible, el stock será cero (0) y aparecerá en color rojo y ya no te permitirá agregar mas cantidad de ese producto./
+Si el stock es mayor a 1 se visualizará en color verde./
+En el carrito de compras, si eliminas un producto o la totalidad, el stock se actualizara y lo podrás visualizar nuevamente en su cantidad original.
+
+### CARRITO DE COMPRAS
 Si no cuentas con ningun carrito agregado al carrito, observarás un mensaje indicandote que el carrito de compras se encuentra vacio.
 De lo contrario, podrás observar una tabla con la información de los productos agregados al carrito: imagen, nombre, sku, cantidad, precio unitario y precio total.
 Tambien contarás con botones para eliminar un producto en especifico o en su defecto, vaciar el carrito.
 Finalmente, en el lado derecho podrás observar una pequeña tabla con un "Resumen de tu pedido", donde podrás elegir si completar la compra, o seleccionar "agregar más productos" redireccionandote al HOME (categorías).
 
-# COMPLETAR LA COMPRA
+### COMPLETAR LA COMPRA
 Una vez seleccionada esta opción, estas muy cerca a finalizar la compra.
 En ésta sección deberás llenar los campos solicitados para posteriormente contactarte:
 Nombre completo, teléfono, dirección, e-mail. 
 En esta sección tambien contarás con un botón de 'ir atrás' por si deseas modificar tu compra (añadir o eliminar productos).
 Una vez llenos estos campos, deberás seleccionar "Enviar pedido" para proceder a generar el número de orden con el que podrás realizar seguimiento a la compra". 
 Finalmente ¡Has completado tu compra! La orden se enviará y contarás con un boton de "IR AL HOME".
-
 
 ## Available Scripts
 

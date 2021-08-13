@@ -6,7 +6,12 @@ import { ItemCountComponent } from "../../components/ItemCountComponent";
 import { Container, Row, Col, Breadcrumb, Button } from 'react-bootstrap';
 
 export function ItemDetailComponent({ img, name, sku, description, price, id, stock, categoryId }) {
-  const { onAdd, addToCart, isAdded, quantity } = useContext(CartContext);
+  const { onAdd, addToCart, setAddToCart, isAdded, setIsAdded, quantity } = useContext(CartContext);
+
+  if (stock <= 0) {
+    setIsAdded(true);
+    setAddToCart(true);
+  }
 
   return (
     <>
@@ -36,7 +41,7 @@ export function ItemDetailComponent({ img, name, sku, description, price, id, st
 
               <div className="row-description">
                 <h3>CLP {price}</h3>
-                <h6>Quedan {stock} unidades</h6>
+                <h6 className={stock > 0 ? "stock" : "sin-stock"}>Quedan {stock} unidades</h6>
               </div>
 
               <div className="row-description">
@@ -46,7 +51,11 @@ export function ItemDetailComponent({ img, name, sku, description, price, id, st
 
               <div className="row-description flex">
                 {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
-                {isAdded ? <Button className="goToCart"><Link to={'/cart'} className="goToCart">Ir al carrito de compras</Link></Button> : <Button className="buttonAddToCart" onClick={() => { onAdd(id, quantity, price, { "image": img, "item": name, "sku": sku, "cantidad": quantity, "id": id, "unitPrice": price, "price": (price * quantity) }) }} variant="info">Agregar al carrito</Button>}
+
+                {isAdded ?
+                  stock === 0 ? "" : <Button className="goToCart"><Link to={'/cart'} className="goToCart">Ir al carrito de compras</Link></Button>
+                  :
+                  <Button className="buttonAddToCart" onClick={() => { onAdd(id, quantity, price, { "image": img, "item": name, "sku": sku, "cantidad": quantity, "id": id, "unitPrice": price, "price": (price * quantity) }) }} variant="info">Agregar al carrito</Button>}
               </div>
             </div>
           </Col>
