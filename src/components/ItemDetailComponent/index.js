@@ -1,5 +1,5 @@
 import './style.css';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { CartContext } from '../../context/CartContext';
 import { ItemCountComponent } from "../../components/ItemCountComponent";
@@ -8,8 +8,8 @@ import { Container, Row, Col, Breadcrumb, Button } from 'react-bootstrap';
 export function ItemDetailComponent({ img, name, sku, description, price, id, stock, categoryId }) {
   const { onAdd, addToCart, setAddToCart, isAdded, setIsAdded, quantity } = useContext(CartContext);
 
-  if(stock <= 0) {
-    setIsAdded(true); 
+  if (stock <= 0) {
+    setIsAdded(true);
     setAddToCart(true);
   }
 
@@ -51,7 +51,11 @@ export function ItemDetailComponent({ img, name, sku, description, price, id, st
 
               <div className="row-description flex">
                 {addToCart ? "" : <ItemCountComponent cantidadMinima={1} stock={stock} />}
-                {isAdded ? <Button className="goToCart"><Link to={'/cart'} className="goToCart">Ir al carrito de compras</Link></Button> : <Button className="buttonAddToCart" onClick={() => { onAdd(id, quantity, price, { "image": img, "item": name, "sku": sku, "cantidad": quantity, "id": id, "unitPrice": price, "price": (price * quantity) }) }} variant="info">Agregar al carrito</Button>}
+
+                {isAdded ?
+                  stock === 0 ? "" : <Button className="goToCart"><Link to={'/cart'} className="goToCart">Ir al carrito de compras</Link></Button>
+                  :
+                  <Button className="buttonAddToCart" onClick={() => { onAdd(id, quantity, price, { "image": img, "item": name, "sku": sku, "cantidad": quantity, "id": id, "unitPrice": price, "price": (price * quantity) }) }} variant="info">Agregar al carrito</Button>}
               </div>
             </div>
           </Col>
