@@ -55,7 +55,7 @@ export function ItemDetailComponent({ img, name, sku, description, price, id, st
                 {isAdded ?
                   stock === 0 ? "" : <Button className="goToCart"><Link to={'/cart'} className="goToCart">Ir al carrito de compras</Link></Button>
                   :
-                  <Button className="buttonAddToCart" onClick={() => { onAdd(id, quantity, price, { "image": img, "item": name, "sku": sku, "cantidad": quantity, "id": id, "unitPrice": price, "price": (price * quantity) }) }} variant="info">Agregar al carrito</Button>}
+                  <Button className="buttonAddToCart" onClick={() => { onAdd(id, quantity, price, { "image": img, "item": name, "sku": sku, "cantidad": quantity, "id": id, "unitPrice": price, "price": (price * quantity) }) }} variant="info">Agregar al Carrito</Button>}
               </div>
             </div>
           </Col>
