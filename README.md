@@ -15,11 +15,13 @@ Puedes visualizar el proyecto en https://planeta-deli.web.app/.
 - Firebase Hosting: https://planeta-deli.web.app/
 - CategorÍas dinámicas con Firestore - Firebase.
 - Creación de número de seguimiento con Firebase.
+- API WhatsApp
 - Librerias y estilos: React-Bootstrap, Material-UI, Google Fonts.
 
 ## SECCIONES:
 
 `Contexto: CartContext`
+La tienda virtual hace uso del Local Storage, por lo que mantiene almacenado el contenido de CART, permitiendole al usuario abandonar el navegador o actualizar la pantalla, manteniendo la información del carrito de compras. 
 
 ### HOME
 El HOME está conformado por una vista de las tres categorías que agrupan los productos que se ofrecen en la tienda virtual.
