@@ -85,7 +85,7 @@ export function CartComponent() {
           <h4>¡Muchas gracias por tu compra!</h4>
           <p>Muy pronto te contactaremos</p>
           <p>Tu codigo de seguimiento es: {orderId}</p>
-          <Button className="goToHome"><Link to={'/'} className="goToHome">Ir al home</Link></Button>
+          <Button className="goToHome"><Link to={'/'} className="goToHome">Ir al HOME</Link></Button>
         </div>
       </Container>
     )
