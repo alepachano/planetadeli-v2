@@ -4,7 +4,7 @@ Podrás encontrar batidoras, hornos y utensilios de cocina.
 
 ## Proyecto Final para CoderHouse con React.
 Creado con [Create React App](https://github.com/facebook/create-react-app).
-Puedes visualizar el proyecto en https://planeta-deli.web.app/.
+Puedes visualizar el proyecto en https://planeta-deli.web.app/ \
 Video demostrativo: https://docs.google.com/presentation/d/17I1_-pnQkyPg9M8pZU1TLstmLhHP2xBf/edit?usp=sharing&ouid=118226764130329019836&rtpof=true&sd=true
 
 ## Tecnologías utilizadas:
